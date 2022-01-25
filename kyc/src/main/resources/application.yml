@@ -1,0 +1,37 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 259927033491-cefat2bfpcnhlv6295bh542nnthtgg6d.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+            - email
+            - profile
+            
+  # database connection      
+  jpa:
+    show-sql: false  
+    hibernate:      
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tutordb
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+            
+app:
+  tokenSecret: futureaisoft926D96C90030DD58429D2751AC1BDBBC
+  tokenExpirationMsec: 864000000
+  authorizedRedirectUris:
+    - http://localhost:3000/oauth2/redirect
+    
+    
