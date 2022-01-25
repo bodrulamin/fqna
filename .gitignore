@@ -3,3 +3,8 @@ kyc/target/
 util/target/
 fileserver/target/
 client/node_modules/
+
+
+kyc/bin/
+quiz/bin/
+util/bin/
