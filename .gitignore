@@ -2,3 +2,4 @@ quiz/target/
 kyc/target/
 util/target/
 fileserver/target/
+client/node_modules/
