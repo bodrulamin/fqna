@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pandabar/main.view.dart';
+import 'package:pandabar/model.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,72 +38,89 @@ class _HomePageState extends State<HomePage> {
             pinned: true,
             snap: false,
             centerTitle: false,
-            title: Center(
-              child: Text('Questionnaire'),
-            ),
-            bottom: AppBar(
-              title: Column(
-                children: [
-                  Row(
-                    children: [
-              ButtonTheme(
-              //minWidth: 200.0,
-                height: 40.0,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+            title: Column(
+              children: [
+                Row(
+                  children: [
+                    ButtonTheme(
+                      //minWidth: 200.0,
+                      height: 40.0,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
 
+                          padding: const EdgeInsets.all(7.5),
 
-                    padding: const EdgeInsets.all(7.5),
-
-                    //textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: Icon(Icons.filter_alt_outlined, color: Colors.deepPurple, size: 25,),
-                ),
-              ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 40,
-                            color: Colors.white,
-                            child: TextField(
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                  hintText: 'Search for something',
-                                  prefixIcon: Icon(Icons.search),
-                                  suffixIcon: Icon(Icons.camera_alt)),
-                            ),
+                          //textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        child: const Icon(
+                          Icons.filter_alt_outlined,
+                          color: Colors.deepPurple,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 40,
+                          color: Colors.white,
+                          child: const TextField(
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                hintText: 'Search for something',
+                                suffixIcon: Icon(Icons.search)),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
 
+            // title: const Center(
+            //   child: Text('Questionnaire'),
+            // ),
+          ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
                 height: 400,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'questionnaire',
                   ),
                 ),
               ),
-              Container(
-                height: 1000,
-                color: Colors.pink,
-              ),
             ]),
           ),
         ],
+      ),
+
+
+
+
+      bottomNavigationBar: PandaBar(
+        buttonData: [
+          PandaBarButtonData(id: 'Grey', icon: Icons.topic_outlined, title: 'Topics'),
+          PandaBarButtonData(id: 'Blue', icon: Icons.book, title: 'Blue'),
+          PandaBarButtonData(
+              id: 'Red', icon: Icons.account_balance_wallet, title: 'Red'),
+          PandaBarButtonData(
+              id: 'Yellow', icon: Icons.person_pin, title: 'Profile'),
+        ],
+        onChange: (id) {
+          setState(() {});
+
+        },
+        onFabButtonPressed: () {
+        backgroundColor: Color(0xffFFC852);
+      },
       ),
     );
   }
