@@ -1,8 +1,8 @@
 package com.futureaisoft.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +14,7 @@ import com.futureaisoft.repository.QuestionRepository;
 @Service
 public class MyService {
 
-	@Autowired
+
 	private QuestionRepository questionRepository;
 
 	public Question saveQuestion(Question question) {
@@ -25,7 +25,9 @@ public class MyService {
 
 	public Question getQuestion(Long id) {
 
-		return questionRepository.findById(id).get();
+		Optional<Question> question = questionRepository.findById(id);
+
+		return question.orElseGet(Question::new);
 	}
 
 	public void deleteQuestion(Question question) {

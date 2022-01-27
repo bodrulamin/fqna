@@ -31,29 +31,10 @@ import com.futureaisoft.util.MyConstant;
 public class QuestionController {
 	Logger log = LoggerFactory.getLogger(QuestionController.class);
 
-	@Autowired
+
 	private MyService service;
 
 	private ApiResponse res = MyConstant.apiRes;
-
-	@PostMapping(value = "/save")
-	public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
-
-		log.info("Starting save: save(@RequestBody Question entity)");
-		try {
-			Question question = service.saveQuestion(entity);
-			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("Question saved successfully");
-			res.setData(question);
-			
-			return ResponseEntity.ok(res);
-			
-		} catch (Exception e) {
-			log.trace(e.getMessage(), e);
-			res.setMessage("Question added failed!");
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-		}
-	}
 
 	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page ) {
@@ -72,6 +53,25 @@ public class QuestionController {
 		}
 	}
 
+
+	@PostMapping(value = "/save")
+	public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
+
+		log.info("Starting save: save(@RequestBody Question entity)");
+		try {
+			Question question = service.saveQuestion(entity);
+			res.setStatus(MyConstant.SUCCESS);
+			res.setMessage("Question saved successfully");
+			res.setData(question);
+
+			return ResponseEntity.ok(res);
+
+		} catch (Exception e) {
+			log.trace(e.getMessage(), e);
+			res.setMessage("Question added failed!");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+		}
+	}
 	@GetMapping(value = "/delete/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
