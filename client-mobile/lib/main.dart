@@ -106,21 +106,28 @@ class _HomePageState extends State<HomePage> {
 
 
       bottomNavigationBar: PandaBar(
+        backgroundColor: Colors.deepPurple,
+        buttonSelectedColor: Colors.white,
+        buttonColor: Colors.white,
+
+
         buttonData: [
-          PandaBarButtonData(id: 'Grey', icon: Icons.topic_outlined, title: 'Topics'),
-          PandaBarButtonData(id: 'Blue', icon: Icons.book, title: 'Blue'),
+          PandaBarButtonData(id: 'Topics', icon: Icons.topic_outlined,  title: 'Topics'),
+          PandaBarButtonData(id: 'Blue', icon: Icons.border_color, title: 'Blue'),
           PandaBarButtonData(
               id: 'Red', icon: Icons.account_balance_wallet, title: 'Red'),
           PandaBarButtonData(
               id: 'Yellow', icon: Icons.person_pin, title: 'Profile'),
         ],
+
         onChange: (id) {
           setState(() {});
 
         },
         onFabButtonPressed: () {
-        backgroundColor: Color(0xffFFC852);
-      },
+            
+
+        },
       ),
     );
   }
