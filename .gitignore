@@ -7,7 +7,7 @@ client/node_modules/
 
 kyc/bin/
 quiz/bin/
-quize/src/main/resources/application/properties
+quize/src/main/resources/application.properties
 util/bin/
 fileserver/bin/
 
