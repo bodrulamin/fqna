@@ -1,0 +1,288 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background: #f7f7f7;
+}
+img{
+    max-width: 100%;
+}
+
+.main {
+    max-width: 100%;
+    background: #ffffff;
+    margin: 0 auto;
+    padding: 10px 40px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(253, 254, 255);
+    
+    border-bottom: 1px solid rgb(190, 190, 190);
+    margin-bottom: 30px;
+}
+.header .profile{}
+.header .Question{}
+.Question {
+    display: flex;
+    align-items: center;
+}
+.profile {
+    flex-basis: 7%;
+}
+
+.header .Question a {
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.allcontent{
+    display: flex;
+}
+.topic{
+    flex-basis: 20%;
+}
+.topic h4 {
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: #333;
+}
+.topic ul {
+    list-style: none;
+}
+.topic ul li{}
+.topic ul li a {
+    color: #000000b5;
+    font-size: 16px;
+    padding-bottom: 12px;
+    
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.maincontent {
+    flex-basis: 60%;
+   
+ 
+}
+.maincontent .box{
+    display: flex;
+    
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-right: 30px;
+
+   
+
+}
+
+.maincontent .box .descriptive h2{
+    font-size: 25px;
+    color: #333;
+
+}
+
+.maincontent .box .descriptive a{
+    display: inline-block;
+    padding: 10px;
+    background: darkgreen;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 15px;
+
+}
+
+.maincontent .box .descriptive a:hover{
+    background-color: #111;
+    transition: .3s;
+}
+
+
+
+.maincontent .box .left{
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+}
+.maincontent .box .left img{}
+.maincontent .box .right{
+    flex-basis: 50%;
+}
+.maincontent .box .right{
+    padding-left: 30px;
+}
+.maincontent .box .right h2 {
+    font-size: 25px;
+    color: #333;
+}
+.maincontent .box .right p{}
+.maincontent .box .right a {
+    display: inline-block;
+    padding: 10px;
+    background: darkgreen;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 15px;
+}
+.maincontent .box .right a:hover{
+    background-color: #111;
+    transition: .3s;
+}
+
+.recent{
+    flex-basis: 20%;
+}
+.recent h4{
+    font-size: 23px;
+    color: #333;
+    padding-bottom: 20px;
+}
+.recent .recentbox{
+    background-color: #fff;
+    padding: 8px;
+    display: flex;
+    margin-bottom: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.recent .recentbox .left{
+    flex-basis: 50%;
+    padding-right: 15px;
+}
+.recent .recentbox .left img{}
+.recent .recentbox .right{
+    flex-basis: 50%;
+}
+.recent .recentbox .right h4{
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+.recent .recentbox .right .date{}
+.recent .recentbox .right .date p{
+    font-size: 13px;
+    color: rgb(136, 136, 136);
+}
+
+
+
+
+
+
+
+
+
+/* Responsive */
+@media screen and (max-width:768px){
+    
+    .profile {
+        flex-basis: 10%;
+    }
+    .allcontent {
+      
+        display: block;
+    }
+    .topic {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .topic ul {
+        list-style: none;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+    .topic ul li a {
+        color: #333333b5;
+        font-size: 17px;
+        padding-bottom: 15px;
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 500;
+        margin: 0 10px;
+        background: #f7f7f7;
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .maincontent {
+        /* flex-basis: 60%; */
+        width: 100%;
+        margin: 15px auto;
+    }
+    .maincontent .box {
+        margin-right: 0px;
+        display: block;
+    }
+    .maincontent .box .right {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+    .recent h4 {
+       
+        margin-top: 30px;
+    }
+
+    .maincontent .box .right h2 {
+        font-size: 20px;
+        
+    }
+}
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1)
+}
+
+.search input {
+    height: 50px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid rgb(20, 114, 4)
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 11px;
+    left: 16px
+}
+
+.search button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 48px;
+    width: 110px;
+    background: darkgreen;
+}
