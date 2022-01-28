@@ -21,7 +21,7 @@ import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/question")
+@RequestMapping("api/v1/questions")
 @CrossOrigin(origins = "*")
 public class QuestionController {
 	Logger log = LoggerFactory.getLogger(QuestionController.class);
@@ -48,7 +48,7 @@ public class QuestionController {
 	}
 
 
-	@PostMapping(value = "/save")
+	@PostMapping(value = "")
 	public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
 
 		log.info("Starting save: save(@RequestBody Question entity)");
