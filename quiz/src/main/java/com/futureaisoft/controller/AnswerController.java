@@ -72,7 +72,7 @@ public class AnswerController {
 	}
 
 	
-	@GetMapping(value = "/getAnswers")
+	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getAnswers(@RequestParam(defaultValue = "1") int page ) {
 		log.info("Starting getAnswers: getAnswers(@RequestParam long page)");
 		try {

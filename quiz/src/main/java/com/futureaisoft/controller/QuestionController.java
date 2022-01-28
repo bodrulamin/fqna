@@ -30,7 +30,7 @@ public class QuestionController {
 
 	private ApiResponse res = MyConstant.apiRes;
 
-	@GetMapping(value = "/getQuestion")
+	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page ) {
 		log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
 		try {
