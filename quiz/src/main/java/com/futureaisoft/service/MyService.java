@@ -27,27 +27,38 @@ public class MyService {
 		return questionRepository.save(question);
 	}
 
-	
 	public Question getQuestion(Long id) {
 		Optional<Question> question = questionRepository.findById(id);
 		return question.orElseGet(Question::new);
 	}
 	
-
 	public void deleteQuestion(Question question) {
 		questionRepository.delete(question);
 	}
 	
-
 	public List<Question> getQuestions(int page) {
 		Pageable pageable = PageRequest.of(page, 20);
 		Page<Question> questions = questionRepository.findAll(pageable);
 		return questions.toList();
 	}
 
-
 	public Answer saveAnswer(Answer answer) {
 		return answerRepository.save(answer);
+	}
+
+	public Answer getAnswer(Long id) {
+		Optional<Answer> answer = answerRepository.findById(id);
+		return answer.orElseGet(Answer::new);
+	}
+
+	public void deleteAnswer(Answer answer) {
+		answerRepository.delete(answer);
+	}
+
+	public List<Answer> getAnswers(int page) {
+		Pageable pageable = PageRequest.of(page, 20);
+		Page<Answer> answers = answerRepository.findAll(pageable);
+		return answers.toList();
 	}
 
 }
