@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.futureaisoft.model.Answer;
 import com.futureaisoft.model.Question;
+import com.futureaisoft.model.Topic;
 import com.futureaisoft.repository.AnswerRepository;
 import com.futureaisoft.repository.QuestionRepository;
+import com.futureaisoft.repository.TopicRepository;
 
 @Service
 public class MyService {
@@ -22,6 +24,9 @@ public class MyService {
 	
 	@Autowired
 	private AnswerRepository answerRepository;
+	
+	@Autowired
+	private TopicRepository topicRepository;
 
 	public Question saveQuestion(Question question) {
 		return questionRepository.save(question);
@@ -59,6 +64,10 @@ public class MyService {
 		Pageable pageable = PageRequest.of(page, 20);
 		Page<Answer> answers = answerRepository.findAll(pageable);
 		return answers.toList();
+	}
+
+	public Topic saveTopic(Topic topic) {
+		return topicRepository.save(topic);
 	}
 
 }

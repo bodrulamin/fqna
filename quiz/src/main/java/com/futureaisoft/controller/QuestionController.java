@@ -3,6 +3,7 @@ package com.futureaisoft.controller;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,7 +26,7 @@ import com.futureaisoft.util.MyConstant;
 public class QuestionController {
 	Logger log = LoggerFactory.getLogger(QuestionController.class);
 
-
+	@Autowired
 	private MyService service;
 
 	private ApiResponse res = MyConstant.apiRes;
