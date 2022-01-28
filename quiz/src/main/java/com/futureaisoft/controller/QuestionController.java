@@ -33,7 +33,6 @@ public class QuestionController {
 	@GetMapping(value = "/getQuestion")
 	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page ) {
 		log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
-		//System.out.println(page);
 		try {
 			List<Question> questions = service.getQuestions(page-1);
 			res.setStatus(MyConstant.SUCCESS);

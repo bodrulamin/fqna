@@ -75,7 +75,6 @@ public class AnswerController {
 	@GetMapping(value = "/getAnswers")
 	public ResponseEntity<ApiResponse> getAnswers(@RequestParam(defaultValue = "1") int page ) {
 		log.info("Starting getAnswers: getAnswers(@RequestParam long page)");
-		//System.out.println(page);
 		try {
 			List<Answer> answers = service.getAnswers(page-1);
 			res.setStatus(MyConstant.SUCCESS);
