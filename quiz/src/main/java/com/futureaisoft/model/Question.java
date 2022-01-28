@@ -20,7 +20,23 @@ public class Question {
 	private long userId;
 	private String createDate;
 	private String updateDate;
+		
+	public Question() {
 	
+	}
+	
+	public Question(long id, String question, String type, String imageUrl, long topicId, long userId,
+			String createDate, String updateDate) {
+		this.id = id;
+		this.question = question;
+		this.type = type;
+		this.imageUrl = imageUrl;
+		this.topicId = topicId;
+		this.userId = userId;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+	}
+
 	public long getId() {
 		return id;
 	}

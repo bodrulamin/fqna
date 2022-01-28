@@ -1,17 +1,35 @@
 package com.futureaisoft.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "pointChart")
 public class PointChart {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private int questionPoint;
 	private int answerPoint;
 	private String createDate;
 	private String updateDate;
 	
+	public PointChart() {
+
+	}
 	
+	public PointChart(long id, int questionPoint, int answerPoint, String createDate, String updateDate) {
+		this.id = id;
+		this.questionPoint = questionPoint;
+		this.answerPoint = answerPoint;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+	}
+
 	public long getId() {
 		return id;
 	}

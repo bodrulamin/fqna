@@ -20,6 +20,20 @@ public class Answer {
 	private String createDate;
 	private String updateDate;
 	
+	public Answer() {
+		
+	}
+	public Answer(long id, String answer, String imageUrl, long questionId, long userId, String createDate,
+			String updateDate) {
+		this.id = id;
+		this.answer = answer;
+		this.imageUrl = imageUrl;
+		this.questionId = questionId;
+		this.userId = userId;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+	}
+	
 	public long getId() {
 		return id;
 	}

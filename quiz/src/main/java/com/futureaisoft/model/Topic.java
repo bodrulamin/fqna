@@ -18,6 +18,17 @@ public class Topic {
 	private String updateDate;
 	
 	
+	public Topic() {
+		
+	}
+	
+	public Topic(long id, String name, String createDaate, String updateDate) {
+		this.id = id;
+		this.name = name;
+		this.createDaate = createDaate;
+		this.updateDate = updateDate;
+	}
+
 	public long getId() {
 		return id;
 	}
