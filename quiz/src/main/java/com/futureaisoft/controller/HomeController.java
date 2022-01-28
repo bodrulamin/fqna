@@ -11,16 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.futureaisoft.model.Question;
 import com.futureaisoft.model.Topic;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
-import antlr.Token;
-
 @RestController
-@RequestMapping("api/home")
+@RequestMapping("api/v1/home")
 @CrossOrigin(origins = "*")
 public class HomeController {
 	
