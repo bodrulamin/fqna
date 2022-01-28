@@ -1,3 +1,4 @@
+import 'package:client_mobile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:pandabar/main.view.dart';
 import 'package:pandabar/model.dart';
@@ -10,6 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/profile' : (context) => Profile(),
+      },
         // Remove the debug banner
         debugShowCheckedModeBanner: false,
         title: 'Questionnaire',
@@ -118,16 +122,22 @@ class _HomePageState extends State<HomePage> {
         buttonSelectedColor: Colors.white,
         buttonColor: Colors.white,
 
+
         buttonData: [
           PandaBarButtonData(id: 'Topics', icon: Icons.topic_outlined,  title: 'Topics'),
           PandaBarButtonData(id: 'Blue', icon: Icons.border_color, title: 'Blue'),
           PandaBarButtonData(
               id: 'Red', icon: Icons.account_balance_wallet, title: 'Red'),
           PandaBarButtonData(
-              id: 'Yellow', icon: Icons.person_pin, title: 'Profile'),
+
+              id: 'Yellow', icon: Icons.person_pin, title: 'Profile',),
         ],
 
         onChange: (id) {
+          if(id == 'Yellow'){
+            Navigator.of(context).pushNamed('/profile');
+          }
+
           setState(() {});
 
         },
