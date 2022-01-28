@@ -2,6 +2,7 @@ import 'package:client_mobile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:pandabar/main.view.dart';
 import 'package:pandabar/model.dart';
+import 'body.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +31,8 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
+
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -93,22 +96,7 @@ class _HomePageState extends State<HomePage> {
 
           SliverList(
             delegate: SliverChildListDelegate([
-              Container(
-                height: 150,
-                child: const Center(
-                  child: Card(
-                    child: InkWell(
-                      splashColor: Colors.grey,
-
-                      child: SizedBox(
-                        width: 350,
-                        height: 80,
-                        child: Text('1. what is java ?'),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              BodyPage()
             ]),
           ),
         ],
@@ -147,5 +135,9 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+
   }
+
+
+
 }
