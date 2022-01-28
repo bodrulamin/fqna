@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        '/profile' : (context) => Profile(),
-      },
+        routes: {
+          '/profile': (context) => Profile(),
+        },
         // Remove the debug banner
         debugShowCheckedModeBanner: false,
         title: 'Questionnaire',
@@ -31,8 +31,6 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
-
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -56,7 +54,6 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           primary: Colors.white,
-
                           padding: const EdgeInsets.all(7.5),
 
                           //textStyle: const TextStyle(fontSize: 20),
@@ -93,51 +90,80 @@ class _HomePageState extends State<HomePage> {
             //   child: Text('Questionnaire'),
             // ),
           ),
-
           SliverList(
-            delegate: SliverChildListDelegate([
-              BodyPage()
-            ]),
+            delegate: SliverChildListDelegate([BodyPage()]),
           ),
         ],
       ),
-
-
-
-
       bottomNavigationBar: PandaBar(
         backgroundColor: Colors.deepPurple,
         buttonSelectedColor: Colors.white,
         buttonColor: Colors.white,
 
-
         buttonData: [
-          PandaBarButtonData(id: 'Topics', icon: Icons.topic_outlined,  title: 'Topics'),
-          PandaBarButtonData(id: 'Blue', icon: Icons.border_color, title: 'Blue'),
           PandaBarButtonData(
-              id: 'Red', icon: Icons.account_balance_wallet, title: 'Red'),
+              id: 'Topics', icon: Icons.topic_outlined, title: 'Topics'),
           PandaBarButtonData(
-
-              id: 'Yellow', icon: Icons.person_pin, title: 'Profile',),
+              id: 'Blue', icon: Icons.border_color, ),
+          PandaBarButtonData(
+              id: 'Red', icon: Icons.account_balance_wallet, ),
+          PandaBarButtonData(
+            id: 'profile',
+            icon: Icons.person_pin,
+            title: 'Profile',
+          ),
         ],
-
         onChange: (id) {
-          if(id == 'Yellow'){
+          if (id == 'Topics') {
+            showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    height: 250,
+                    child: Column(
+                      children: <Widget>[
+                        Card(
+                          child: ListTile(
+                            title: Text("C#"),
+                            subtitle: Text("Hello World"),
+                            leading: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/images/c.png")),
+                            trailing: Icon(Icons.adjust),
+                          ),
+                        ),
+                        Card(
+                            child: ListTile(
+                          title: Text("JAVA"),
+                          subtitle: Text("Hello World"),
+                          leading: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/226777.png")),
+                          trailing: Icon(Icons.description),
+                        )),
+                        Card(
+                          child: ListTile(
+                            title: Text("GAVE"),
+                            subtitle: Text("Hello World"),
+                            trailing: Icon(Icons.question_answer),
+                            leading: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/images/graphics.jpg")),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                });
+          }
+          if (id == 'profile') {
             Navigator.of(context).pushNamed('/profile');
           }
 
           setState(() {});
-
         },
-        onFabButtonPressed: () {
-
-
-        },
+        onFabButtonPressed: () {},
       ),
     );
-
   }
-
-
-
 }
