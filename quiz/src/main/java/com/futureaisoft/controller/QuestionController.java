@@ -1,13 +1,8 @@
 package com.futureaisoft.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.futureaisoft.model.Question;
-import com.futureaisoft.repository.QuestionRepository;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
@@ -90,4 +84,7 @@ public class QuestionController {
 		}
 	}
 
+	
+	
+	
 }

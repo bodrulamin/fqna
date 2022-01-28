@@ -18,27 +18,24 @@ public class MyService {
 	private QuestionRepository questionRepository;
 
 	public Question saveQuestion(Question question) {
-
 		return questionRepository.save(question);
-
 	}
 
+	
 	public Question getQuestion(Long id) {
-
 		Optional<Question> question = questionRepository.findById(id);
-
 		return question.orElseGet(Question::new);
 	}
+	
 
 	public void deleteQuestion(Question question) {
 		questionRepository.delete(question);
-
 	}
+	
 
 	public List<Question> getQuestions(int page) {
 		Pageable pageable = PageRequest.of(page, 20);
 		Page<Question> questions = questionRepository.findAll(pageable);
-
 		return questions.toList();
 	}
 
