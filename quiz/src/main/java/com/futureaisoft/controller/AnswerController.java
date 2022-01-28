@@ -78,12 +78,12 @@ public class AnswerController {
 		try {
 			List<Answer> answers = service.getAnswers(page-1);
 			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("Question loaded successfully ");
+			res.setMessage("Answer loaded successfully ");
 			res.setData(answers);
 			return ResponseEntity.ok(res);
 		} catch (Exception e) {
 			log.trace(e.getMessage(), e);
-			res.setMessage("Question loading failed!");
+			res.setMessage("Answer loading failed!");
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
