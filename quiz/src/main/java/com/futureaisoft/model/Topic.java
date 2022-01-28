@@ -17,7 +17,6 @@ public class Topic {
 	private String createDaate;
 	private String updateDate;
 	
-	
 	public Topic() {
 		
 	}

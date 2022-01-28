@@ -3,19 +3,25 @@ package com.futureaisoft.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.futureaisoft.model.Answer;
 import com.futureaisoft.model.Question;
+import com.futureaisoft.repository.AnswerRepository;
 import com.futureaisoft.repository.QuestionRepository;
 
 @Service
 public class MyService {
 
-
+	@Autowired
 	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private AnswerRepository answerRepository;
 
 	public Question saveQuestion(Question question) {
 		return questionRepository.save(question);
@@ -37,6 +43,11 @@ public class MyService {
 		Pageable pageable = PageRequest.of(page, 20);
 		Page<Question> questions = questionRepository.findAll(pageable);
 		return questions.toList();
+	}
+
+
+	public Answer saveAnswer(Answer answer) {
+		return answerRepository.save(answer);
 	}
 
 }

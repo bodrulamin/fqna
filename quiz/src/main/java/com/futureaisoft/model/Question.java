@@ -85,6 +85,5 @@ public class Question {
 	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
-	
-	
+
 }
