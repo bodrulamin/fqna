@@ -1,7 +1,10 @@
 package com.futureaisoft.model;
 
+import javax.persistence.Id;
+
 public class PointChart {
 
+	@Id
 	private long id;
 	private int questionPoint;
 	private int answerPoint;
