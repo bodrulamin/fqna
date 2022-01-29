@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ActivityTimelineComponent } from './activity-timeline/activity-timeline.component';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent,
+    ActivityTimelineComponent
   ],
   imports: [
     CommonModule,
