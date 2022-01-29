@@ -10,9 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.futureaisoft.model.Answer;
+import com.futureaisoft.model.PointChart;
 import com.futureaisoft.model.Question;
 import com.futureaisoft.model.Topic;
 import com.futureaisoft.repository.AnswerRepository;
+import com.futureaisoft.repository.PointChartRepository;
 import com.futureaisoft.repository.QuestionRepository;
 import com.futureaisoft.repository.TopicRepository;
 
@@ -27,6 +29,9 @@ public class MyService {
 	
 	@Autowired
 	private TopicRepository topicRepository;
+	
+	@Autowired
+	private PointChartRepository pointChartRepository;
 
 	public Question saveQuestion(Question question) {
 		return questionRepository.save(question);
@@ -69,5 +74,39 @@ public class MyService {
 	public Topic saveTopic(Topic topic) {
 		return topicRepository.save(topic);
 	}
+	
+	public List<Topic> getTopics(int page) {
+		Pageable pageable = PageRequest.of(page, 20);
+		Page<Topic> topic = topicRepository.findAll(pageable);
+		return topic.toList();
+	}
 
+	public Topic getTopic(Long id) {
+		Optional<Topic> topic = topicRepository.findById(id);
+		return topic.orElseGet(Topic::new);
+	}
+
+	public void deleteTopic(Topic topic) {
+		topicRepository.delete(topic);
+	}
+
+	public PointChart savePointChart(PointChart pointChart) {
+		return pointChartRepository.save(pointChart);
+	}
+
+	public List<PointChart> getPointChart(int page) {
+		Pageable pageable = PageRequest.of(page, 20);
+		Page<PointChart> pointChart = pointChartRepository.findAll(pageable);
+		return pointChart.toList();
+	}
+
+	public PointChart getPointChart(Long id) {
+		Optional<PointChart> pointChart = pointChartRepository.findById(id);
+		return pointChart.orElseGet(PointChart::new);
+	}
+
+	public void deletePointChart(PointChart pointChart) {
+		pointChartRepository.delete(pointChart);
+	}
+	
 }
