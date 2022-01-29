@@ -1,3 +1,20 @@
+<!-- <mat-toolbar color="primary">
+      
+      
+      <div class="profile"><img src="../../assets/images/profile.jpg" alt="" max-width="100%" height="40"
+        class="rounded-circle"> </div>
+      <span class="example-spacer"></span>
+      
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+      <div class="Question"><a href="#">Ask a Question</a></div>
+
+    </mat-toolbar> -->
+
+
+
+
 <div class="main">
 
     <!-- Header part Start -->
@@ -69,23 +86,202 @@
             <!-- Search bar end-->
 
 
-            <div class="box">
-                <div class="left"><img src="../../assets/images/java.png" alt=""></div>
+            <mat-accordion multi>
+                <div class="card_design">
+                    <mat-card class="example-card">
+                        <div class="parent_button">
+                            <div class="arrow_button">
+                                <img src="../../assets/images/icons/sort-up-solid.svg"
+                                    style="max-width: 30px; display: block; margin-top: 20px; max-height: 35px;">
+                                <span style="font-size: 20px; margin-left: 6px; ">0</span>
+                                <img src="../../assets/images/icons/sort-down-solid.svg"
+                                    style="max-width: 30px; display: block; max-height: 35px;">
+    
+                            </div>
+                            <div class="content_p">
+                                <mat-card-header>
+    
+                                    <mat-card-title>What is java?</mat-card-title>
+    
+                                </mat-card-header>
+    
+    
+                                <mat-card-content>
+                                    <p style="margin-left: 16px;">Answer : Application Programming Interface (API) is a
+                                        software interface that allows two
+                                        applications
+                                        to
+                                        interact with each other without any user intervention.</p>
+                                </mat-card-content>
+                            </div>
+                            <div>
+                                <mat-icon>account_circle</mat-icon>
 
-                <div class="right">
-                    <h2>Question: What is Java?</h2>
-                    <p>Ans: Java is a cross-platform object-oriented programming language that was released by Sun
-                        Microsystems in the year 1995. Today, Java is needed to run various applications such as
-                        games,
-                        social media applications, audio and video applications, etc. </p>
-                    <a href="#">Read More</a>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="../../assets/images/icons/thumbs-up-regular.svg" style=" max-width: 20px; margin-left: 84px;">
+                            <span>7</span>
+                            <img src="../../assets/images/icons/thumbs-down-regular.svg" style="max-width: 20px;margin-left: 30px">
+                            <span>0</span>
+                        </div>
+                        <mat-card-actions align="end">
+                            
+                            <button mat-raised-button color="primary" (click)="togglePanel()">Reply(4)</button>
+                        </mat-card-actions>
+                    </mat-card>
+    
+                    <mat-expansion-panel [expanded]="panelOpenState">
+                        <div class="mt-4">
+                           
+                              
+                            <p>Ans 1: Application Programming Interface (API) is a software interface that allows two
+                                applications
+                                to
+                                interact with each other without any user intervention.</p>
+                                
+                                <mat-divider></mat-divider>
+    
+                            <p>Ans 2: API is a collection of software
+                                functions and procedures. In simple terms,
+                            </p>
+                            <mat-divider></mat-divider>
+    
+                            <p>Ans 3: API means a software code that can be accessed or
+                                executed. API is defined as a code that helps two different software’s to communicate
+                                and
+                                exchange data with each other.</p>
+
+    
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Your Answer</mat-label>
+                                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                            </mat-form-field>
+    
+                        </div>
+                        <div>
+                            <button mat-raised-button color="primary">Post Your Answer</button>
+    
+                        </div>
+    
+    
+    
+    
+                    </mat-expansion-panel>
                 </div>
-            </div>
 
-            <div class="box">
+
+                <div class="card_design">
+                    <mat-card class="example-card">
+                        <div class="parent_button">
+                            <div class="arrow_button">
+                                <img src="../../assets/images/icons/sort-up-solid.svg"
+                                    style="max-width: 30px; display: block; margin-top: 20px; max-height: 35px;">
+                                <span style="font-size: 20px; margin-left: 6px; ">0</span>
+                                <img src="../../assets/images/icons/sort-down-solid.svg"
+                                    style="max-width: 30px; display: block; max-height: 35px;">
+    
+                            </div>
+                            <div class="content_p">
+                                <mat-card-header>
+    
+                                    <mat-card-title>What is an API?</mat-card-title>
+    
+                                </mat-card-header>
+    
+    
+                                <mat-card-content>
+                                    <p style="margin-left: 16px;">Answer : Application Programming Interface (API) is a
+                                        software interface that allows two
+                                        applications
+                                        to
+                                        interact with each other without any user intervention.</p>
+                                </mat-card-content>
+                            </div>
+                            <div>
+                                <mat-icon>account_circle</mat-icon>
+
+                            </div>
+                        </div>
+                        <div>
+                            <img src="../../assets/images/icons/thumbs-up-regular.svg" style=" max-width: 20px; margin-left: 84px;">
+                            <span>7</span>
+                            <img src="../../assets/images/icons/thumbs-down-regular.svg" style="max-width: 20px;margin-left: 30px">
+                            <span>0</span>
+                        </div>
+                        <mat-card-actions align="end">
+                            
+                            <button mat-raised-button color="primary" (click)="togglePanel()">Reply(3)</button>
+                        </mat-card-actions>
+                    </mat-card>
+    
+                    <mat-expansion-panel [expanded]="panelOpenState">
+                        <div class="mt-4">
+                           
+                              
+                            <p>Ans 1: Application Programming Interface (API) is a software interface that allows two
+                                applications
+                                to
+                                interact with each other without any user intervention.</p>
+                                
+                                <mat-divider></mat-divider>
+    
+                            <p>Ans 2: API is a collection of software
+                                functions and procedures. In simple terms,
+                            </p>
+                            <mat-divider></mat-divider>
+    
+                            <p>Ans 3: API means a software code that can be accessed or
+                                executed. API is defined as a code that helps two different software’s to communicate
+                                and
+                                exchange data with each other.</p>
+
+    
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Your Answer</mat-label>
+                                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                            </mat-form-field>
+    
+                        </div>
+                        <div>
+                            <button mat-raised-button color="primary">Post Your Answer</button>
+    
+                        </div>
+    
+    
+    
+    
+                    </mat-expansion-panel>
+                </div>
+
+
+               
+    
+              
+
+            </mat-accordion>
+            
+
+          
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="box">
 
 
                 <div class="descriptive">
+
                     <h2>Question: What is an API</h2>
                     <p>Ans: Application Programming Interface (API) is a software interface that allows two
                         applications
@@ -132,7 +328,7 @@
 
 
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -140,22 +336,17 @@
 
 
 
-            <div style="margin-right: 27px; margin-bottom: 20px;">
+            <!-- <div style="margin-right: 27px; margin-bottom: 20px;">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
-                        <mat-panel-title>Question : What is java? </mat-panel-title>
+                        <mat-panel-title>Question : What is java?
 
-                        <mat-icon>account_circle</mat-icon>
-                        <mat-panel-description>
-                            This is a summary of the content
-                        </mat-panel-description>
-                        
-                       
+                        </mat-panel-title>
 
                     </mat-expansion-panel-header>
-                   
 
-                    
+
+
 
 
                     <div>
@@ -176,7 +367,7 @@
                     </div>
 
                 </mat-expansion-panel>
-            </div>
+            </div> -->
 
 
 
@@ -198,7 +389,11 @@
 
 
 
-            <div class="box">
+
+
+
+
+            <!-- <div class="box">
                 <div class="left"><img src="../../assets/images/java.png" alt=""></div>
 
                 <div class="right">
@@ -212,7 +407,7 @@
                         exchange data with each other.</p>
                     <a href="#">Read More</a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Main content part End -->
 

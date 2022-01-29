@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   isReadMore: boolean = true;
+  panelOpenState: boolean = false;
+
+
   constructor() { }
+
+  togglePanel() {
+    this.panelOpenState = !this.panelOpenState
+}
 
   ngOnInit(): void {
   }

@@ -259,7 +259,7 @@ img{
 
 
 
-
+/* search button design start*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
 body {
@@ -300,8 +300,45 @@ body {
     width: 110px;
     background: darkgreen;
 }
+/* search button design end*/
 
 
 
 
+.card_design{
+    margin-right: 27px;
+    margin-bottom: 50px;
+    
+   
+   
+    
+}
 
+.example-card{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+.example-full-width {
+    width: 100%;
+  }
+
+
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+
+
+  /* card design */
+  .parent_button{
+      display: flex;
+  }
+
+  .arrow_button{
+      width: 100px;
+  }
+
+  
