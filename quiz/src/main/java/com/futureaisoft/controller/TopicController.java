@@ -27,7 +27,7 @@ import com.futureaisoft.util.MyConstant;
 @CrossOrigin(origins = "*")
 public class TopicController {
 
-	Logger log = LoggerFactory.getLogger(HomeController.class);
+	Logger log = LoggerFactory.getLogger(TopicController.class);
 
 	@Autowired
 	private MyService service;
