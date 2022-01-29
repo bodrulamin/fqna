@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +11,44 @@ class QuestionAnswerBody extends StatefulWidget {
 }
 
 class _QuestionAnswerBodyState extends State<QuestionAnswerBody> {
+  late List myList;
+  ScrollController _scrollController = ScrollController();
+  int currentMax = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    myList = List.generate(20, (i) => "Item : ${i+1}");
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels== _scrollController.position.maxScrollExtent){
+        _getMoreData();
+      }
+    });
+  }
+
+  _getMoreData(){
+    print("get more data");
+    for(int i = currentMax; i<currentMax+10; i++){
+      myList.add("Item : ${i+1}");
+    }
+    currentMax =  currentMax + 10;
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
 
-    return ListView(
-      children: [for (int i = 0; i < 10; i++) QuestionCard()],
+    return ListView.builder(
+      controller: _scrollController,
+      itemExtent: 80,
+      itemBuilder: (context, i){
+        return QuestionCard();
+      },
+      itemCount: myList.length+1 ,
+      //children: [for (int i = 0; i < 10; i++) QuestionCard()],
     );
   }
 }
@@ -42,13 +76,7 @@ class QuestionCard extends StatelessWidget {
             children: [
               Text(""
                   "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
-                  "updown asdfdsafsdf a fdadsfsdfsdafsadf sdfasdfsdafdsfdsf"
+
                   ""),
             ],
           ),
