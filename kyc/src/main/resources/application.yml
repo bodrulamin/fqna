@@ -27,7 +27,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/futureai_kyc
     username: root
-    password: 123456
+    password: future@1236
     driverClassName: com.mysql.cj.jdbc.Driver
             
 app:
