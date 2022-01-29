@@ -17,73 +17,73 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.futureaisoft.model.Answer;
+import com.futureaisoft.model.Topic;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/v1/answers")
+@RequestMapping("api/v1/topics")
 @CrossOrigin(origins = "*")
-public class AnswerController {
-    Logger log = LoggerFactory.getLogger(AnswerController.class);
+public class TopicController {
 
-    @Autowired
-    private MyService service;
+	Logger log = LoggerFactory.getLogger(TopicController.class);
 
-    private final ApiResponse res = MyConstant.apiRes;
+	@Autowired
+	private MyService service;
 
-    @PostMapping(value = "")
-    public ResponseEntity<ApiResponse> save(@RequestBody Answer entity) {
+	private ApiResponse res = MyConstant.apiRes;
 
-        log.info("Starting save: save(@RequestBody Answer entity)");
-        try {
-            Answer answer = service.saveAnswer(entity);
-            res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Answer saved successfully");
-            res.setData(answer);
-            return ResponseEntity.ok(res);
+	@PostMapping(value = "")
+	public ResponseEntity<ApiResponse> save(@RequestBody Topic entity) {
 
-        } catch (Exception e) {
-            log.trace(e.getMessage(), e);
-            res.setMessage("Answer added failed!");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-        }
-    }
+		log.info("Starting save: save(@RequestBody Topic entity)");
+		try {
+			Topic topic = service.saveTopic(entity);
+			res.setStatus(MyConstant.SUCCESS);
+			res.setMessage("Topic saved successfully");
+			res.setData(topic);
+			return ResponseEntity.ok(res);
+		} catch (Exception e) {
+			log.trace(e.getMessage(), e);
+			res.setMessage("Topic added failed!");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+		}
+	}
 
     @GetMapping(value = "")
-    public ResponseEntity<ApiResponse> getAnswers(@RequestParam(defaultValue = "1") int page) {
-        log.info("Starting getAnswers: getAnswers(@RequestParam long page)");
+    public ResponseEntity<ApiResponse> getTopics(@RequestParam(defaultValue = "1") int page) {
+        log.info("Starting getTopics: getTopics(@RequestParam long page)");
         try {
-            List<Answer> answers = service.getAnswers(page - 1);
+            List<Topic> topic = service.getTopics(page - 1);
             res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Answer loaded successfully ");
-            res.setData(answers);
+            res.setMessage("Topic loaded successfully ");
+            res.setData(topic);
             return ResponseEntity.ok(res);
         } catch (Exception e) {
             log.trace(e.getMessage(), e);
-            res.setMessage("Answer loading failed!");
+            res.setMessage("Topic loading failed!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
-        log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
+        log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 
-        Answer answer = service.getAnswer(id);
+        Topic topic = service.getTopic(id);
         try {
-            service.deleteAnswer(answer);
+            service.deleteTopic(topic);
             res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Answer deleted successfully");
-            res.setData(answer);
+            res.setMessage("Topic deleted successfully");
+            res.setData(topic);
             return ResponseEntity.ok(res);
         } catch (Exception e) {
             log.trace(e.getMessage(), e);
-            res.setMessage("Answer deletation failed!");
+            res.setMessage("Topic deletation failed!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
 
-
+	
 }
