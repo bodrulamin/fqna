@@ -19,3 +19,23 @@
     margin: auto;
    
 }
+.mat-form-field {
+    margin-right: 12px;
+  }
+
+  .example-full-width{
+    width: 80%;
+}
+.vert{
+    font-size: 40px;
+}
+.textfield{
+    width: 60%;
+}
+.textbox{
+    width: 80%;
+}
+
+.catagory{
+    width: 60%;
+}
