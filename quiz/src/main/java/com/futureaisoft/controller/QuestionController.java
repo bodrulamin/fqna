@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +33,10 @@ public class QuestionController {
 	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page ) {
+	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page) {
 		log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
 		try {
-			List<Question> questions = service.getQuestions(page-1);
+			List<Question> questions = service.getQuestions(page - 1);
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("Question loaded successfully ");
 			res.setData(questions);
@@ -46,7 +47,6 @@ public class QuestionController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
-
 
 	@PostMapping(value = "")
 	public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
@@ -66,9 +66,8 @@ public class QuestionController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
-	
-	
-	@GetMapping(value = "/delete/{id}")
+
+	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
 
@@ -86,7 +85,4 @@ public class QuestionController {
 		}
 	}
 
-	
-	
-	
 }

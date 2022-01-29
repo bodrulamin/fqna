@@ -10,11 +10,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.futureaisoft.model.Answer;
+import com.futureaisoft.model.AnswerRating;
 import com.futureaisoft.model.PointChart;
 import com.futureaisoft.model.Question;
+import com.futureaisoft.model.QuestionRating;
 import com.futureaisoft.model.Topic;
+import com.futureaisoft.repository.AnswerRatingRepository;
 import com.futureaisoft.repository.AnswerRepository;
 import com.futureaisoft.repository.PointChartRepository;
+import com.futureaisoft.repository.QuestionRatingRepository;
 import com.futureaisoft.repository.QuestionRepository;
 import com.futureaisoft.repository.TopicRepository;
 
@@ -32,6 +36,12 @@ public class MyService {
 	
 	@Autowired
 	private PointChartRepository pointChartRepository;
+	
+	@Autowired
+	private QuestionRatingRepository questionRatingRepository;
+	
+	@Autowired
+	private AnswerRatingRepository answerRatingRepository;
 
 	public Question saveQuestion(Question question) {
 		return questionRepository.save(question);
@@ -109,4 +119,41 @@ public class MyService {
 		pointChartRepository.delete(pointChart);
 	}
 	
+	public QuestionRating saveQuestionRatings(QuestionRating questionRating) {
+		return questionRatingRepository.save(questionRating);
+	}
+
+	public List<QuestionRating> getQuestionRatings(int page) {
+		Pageable pageable = PageRequest.of(page, 20);
+		Page<QuestionRating> questionRating = questionRatingRepository.findAll(pageable);
+		return questionRating.toList();
+	}
+
+	public QuestionRating getQuestionRatings(Long id) {
+		Optional<QuestionRating> questionRating = questionRatingRepository.findById(id);
+		return questionRating.orElseGet(QuestionRating::new);
+	}
+
+	public void deleteQuestionRating(QuestionRating questionRating) {
+		questionRatingRepository.delete(questionRating);
+	}
+	
+	public AnswerRating saveAnswerRatings(AnswerRating answerRating) {
+		return answerRatingRepository.save(answerRating);
+	}
+
+	public List<AnswerRating> getAnswerRatings(int page) {
+		Pageable pageable = PageRequest.of(page, 20);
+		Page<AnswerRating> answerRating = answerRatingRepository.findAll(pageable);
+		return answerRating.toList();
+	}
+
+	public AnswerRating getAnswerRatings(Long id) {
+		Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
+		return answerRating.orElseGet(AnswerRating::new);
+	}
+
+	public void deleteAnswerRating(AnswerRating answerRating) {
+		answerRatingRepository.delete(answerRating);
+	}	
 }
