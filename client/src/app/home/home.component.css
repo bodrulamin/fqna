@@ -20,9 +20,10 @@ img{
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(253, 254, 255);
+    height: 43px;
+    /* background-color: rgb(253, 254, 255); */
     
-    border-bottom: 1px solid rgb(190, 190, 190);
+    /* border-bottom: 1px solid rgb(190, 190, 190); */
     margin-bottom: 30px;
 }
 .header .profile{}
@@ -37,7 +38,7 @@ img{
 
 .header .Question a {
     color: #333;
-    font-size: 20px;
+    font-size: 14px;
     text-decoration: none;
     font-weight: 600;
 }
@@ -59,13 +60,21 @@ img{
 }
 .topic ul li{}
 .topic ul li a {
+    display: block;
     color: #000000b5;
-    font-size: 16px;
-    padding-bottom: 12px;
+    font-size: 15px;
+    padding-bottom: 10px;
     
     display: inline-block;
     text-decoration: none;
     font-weight: 500;
+}
+
+.topic ul li a:hover, .topic ul li a:active {
+    color: rgb(44, 156, 53);
+    font-size: 150%;
+    
+
 }
 
 .maincontent {
@@ -178,6 +187,12 @@ img{
 
 
 
+/* Collapse text */
+  .limitTextHeight{
+    height: 0.5px;
+    overflow: hidden;
+  }
+
 
 
 
@@ -208,12 +223,11 @@ img{
         color: #333333b5;
         font-size: 17px;
         padding-bottom: 15px;
-        display: inline-block;
+        
         text-decoration: none;
         font-weight: 500;
         margin: 0 10px;
         background: #f7f7f7;
-        display: inline-block;
         padding: 10px;
     }
 
@@ -280,9 +294,14 @@ body {
 
 .search button {
     position: absolute;
-    top: 2px;
-    right: 2px;
-    height: 48px;
+    top: 4px;
+    right: 5px;
+    height: 41px;
     width: 110px;
     background: darkgreen;
 }
+
+
+
+
+
