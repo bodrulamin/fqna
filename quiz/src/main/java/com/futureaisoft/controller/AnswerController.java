@@ -30,7 +30,7 @@ public class AnswerController {
     @Autowired
     private MyService service;
 
-    private ApiResponse res = MyConstant.apiRes;
+    private final ApiResponse res = MyConstant.apiRes;
 
     @PostMapping(value = "")
     public ResponseEntity<ApiResponse> save(@RequestBody Answer entity) {

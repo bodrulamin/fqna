@@ -29,7 +29,7 @@ public class QuestionController {
 	@Autowired
 	private MyService service;
 
-	private ApiResponse res = MyConstant.apiRes;
+	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getQuestions(@RequestParam(defaultValue = "1") int page ) {
