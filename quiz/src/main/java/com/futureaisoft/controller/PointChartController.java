@@ -23,7 +23,7 @@ import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/v1/PointCharts")
+@RequestMapping("api/v1/point_chart")
 @CrossOrigin(origins = "*")
 public class PointChartController {
 
@@ -35,13 +35,13 @@ public class PointChartController {
 	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getPointCharts(@RequestParam(defaultValue = "1") int page) {
+	public ResponseEntity<ApiResponse> getPointCharts() {
 		log.info("Starting getPointCharts: getPointCharts(@RequestParam long page)");
 		try {
-			List<PointChart> pointChart = service.getPointChart(page - 1);
+			List<PointChart> pointCharts = service.getPointCharts();
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("PointChart loaded successfully ");
-			res.setData(pointChart);
+			res.setData(pointCharts);
 			return ResponseEntity.ok(res);
 
 		} catch (Exception e) {
