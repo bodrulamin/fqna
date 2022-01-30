@@ -51,39 +51,37 @@ public class TopicController {
 		}
 	}
 
-    @GetMapping(value = "")
-    public ResponseEntity<ApiResponse> getTopics(@RequestParam(defaultValue = "1") int page) {
-        log.info("Starting getTopics: getTopics(@RequestParam long page)");
-        try {
-            List<Topic> topic = service.getTopics(page - 1);
-            res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Topic loaded successfully ");
-            res.setData(topic);
-            return ResponseEntity.ok(res);
-        } catch (Exception e) {
-            log.trace(e.getMessage(), e);
-            res.setMessage("Topic loading failed!");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-        }
-    }
+	@GetMapping(value = "")
+	public ResponseEntity<ApiResponse> getTopics(@RequestParam(defaultValue = "1") int page) {
+		log.info("Starting getTopics: getTopics(@RequestParam long page)");
+		try {
+			List<Topic> topic = service.getTopics(page - 1);
+			res.setStatus(MyConstant.SUCCESS);
+			res.setMessage("Topic loaded successfully ");
+			res.setData(topic);
+			return ResponseEntity.ok(res);
+		} catch (Exception e) {
+			log.trace(e.getMessage(), e);
+			res.setMessage("Topic loading failed!");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+		}
+	}
 
-    @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
-        log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
+	@DeleteMapping(value = "/delete/{id}")
+	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+		log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 
-        Topic topic = service.getTopic(id);
-        try {
-            service.deleteTopic(topic);
-            res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Topic deleted successfully");
-            res.setData(topic);
-            return ResponseEntity.ok(res);
-        } catch (Exception e) {
-            log.trace(e.getMessage(), e);
-            res.setMessage("Topic deletation failed!");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-        }
-    }
-
-	
+		Topic topic = service.getTopic(id);
+		try {
+			service.deleteTopic(topic);
+			res.setStatus(MyConstant.SUCCESS);
+			res.setMessage("Topic deleted successfully");
+			res.setData(topic);
+			return ResponseEntity.ok(res);
+		} catch (Exception e) {
+			log.trace(e.getMessage(), e);
+			res.setMessage("Topic deletation failed!");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+		}
+	}
 }
