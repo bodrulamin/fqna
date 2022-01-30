@@ -21,7 +21,8 @@ img{
     display: flex;
     justify-content: space-between;
     height: 43px;
-    /* background-color: rgb(253, 254, 255); */
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     
     /* border-bottom: 1px solid rgb(190, 190, 190); */
     margin-bottom: 30px;
@@ -305,23 +306,7 @@ body {
 
 
 
-.card_design{
-    margin-right: 27px;
-    margin-bottom: 50px;
-    
-   
-   
-    
-}
 
-.example-card{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-
-.example-full-width {
-    width: 100%;
-  }
 
 
 
@@ -339,6 +324,22 @@ body {
 
   .arrow_button{
       width: 100px;
+  }
+
+  .card_design{
+    margin-right: 27px;
+    margin-bottom: 50px;
+  
+    
+}
+
+.example-card{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+.example-full-width {
+    width: 100%;
   }
 
   
