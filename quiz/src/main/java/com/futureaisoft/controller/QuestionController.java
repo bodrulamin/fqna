@@ -2,8 +2,10 @@ package com.futureaisoft.controller;
 
 import java.util.List;
 
+import com.futureaisoft.rabbitmq.config.MessageConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -28,7 +30,8 @@ import com.futureaisoft.util.MyConstant;
 @CrossOrigin(origins = "*")
 public class QuestionController {
     Logger log = LoggerFactory.getLogger(QuestionController.class);
-
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private MyService service;
 
@@ -41,10 +44,10 @@ public class QuestionController {
             @RequestParam(defaultValue = "") String q,
             @RequestParam(defaultValue = "id") String orderby,
             @RequestParam(defaultValue = "ASC") Sort.Direction direction
-            ) {
+    ) {
         log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
         try {
-            List<Question> questions = service.getQuestions(page - 1,size,q, Sort.by(direction, orderby));
+            List<Question> questions = service.getQuestions(page - 1, size, q, Sort.by(direction, orderby));
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question loaded successfully ");
             res.setData(questions);
@@ -77,10 +80,11 @@ public class QuestionController {
 
         log.info("Starting save: save(@RequestBody Question entity)");
         try {
-            Question question = service.saveQuestion(entity);
+            rabbitTemplate.convertAndSend(MessageConfig.question_save_exchange, MessageConfig.routingkey, entity);
+
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question saved successfully");
-            res.setData(question);
+            res.setData(entity);
 
             return ResponseEntity.ok(res);
 

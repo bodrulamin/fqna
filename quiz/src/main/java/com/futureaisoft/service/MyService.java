@@ -28,147 +28,144 @@ import com.futureaisoft.repository.TopicRepository;
 @Service
 public class MyService {
 
-	@Autowired
-	private QuestionRepository questionRepository;
+    @Autowired
+    private QuestionRepository questionRepository;
 
-	@Autowired
-	private AnswerRepository answerRepository;
-	
-	@Autowired
-	private TopicRepository topicRepository;
-	
-	@Autowired
-	private PointChartRepository pointChartRepository;
-	
-	@Autowired
-	private QuestionRatingRepository questionRatingRepository;
-	
-	@Autowired
-	private AnswerRatingRepository answerRatingRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private TopicRepository topicRepository;
 
-	public Question saveQuestion(Question question) {
+    @Autowired
+    private PointChartRepository pointChartRepository;
 
-	rabbitTemplate.convertAndSend(MessageConfig.question_save_exchange,MessageConfig.routingkey,question);
-		return questionRepository.save(question);
-	}
+    @Autowired
+    private QuestionRatingRepository questionRatingRepository;
 
-	public Question getQuestion(Long id) {
-		Optional<Question> question = questionRepository.findById(id);
-		return question.orElseGet(Question::new);
-	}
-	
-	public void deleteQuestion(Question question) {
-		questionRepository.delete(question);
-	}
-
-	public Question getQuestion(long id) {
-		Optional<Question> question = questionRepository.findById(id);
-		return question.orElseGet(Question::new);
-	}
-
-	public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
-		Pageable pageable = PageRequest.of(page, size,sortby);
-
-		
-
-		Page<Question> questions = questionRepository.findAll(pageable);
+    @Autowired
+    private AnswerRatingRepository answerRatingRepository;
 
 
-		return questions.toList();
-	}
 
-	public Answer saveAnswer(Answer answer) {
-		return answerRepository.save(answer);
-	}
+    public Question saveQuestion(Question question) {
 
-	public Answer getAnswer(Long id) {
-		Optional<Answer> answer = answerRepository.findById(id);
-		return answer.orElseGet(Answer::new);
-	}
+        return questionRepository.save(question);
+    }
 
-	public void deleteAnswer(Answer answer) {
-		answerRepository.delete(answer);
-	}
+    public Question getQuestion(Long id) {
+        Optional<Question> question = questionRepository.findById(id);
+        return question.orElseGet(Question::new);
+    }
 
-	public List<Answer> getAnswers(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
-		Page<Answer> answers = answerRepository.findAll(pageable);
-		return answers.toList();
-	}
+    public void deleteQuestion(Question question) {
+        questionRepository.delete(question);
+    }
 
-	public Topic saveTopic(Topic topic) {
-		return topicRepository.save(topic);
-	}
-	
-	public List<Topic> getTopics() {
+    public Question getQuestion(long id) {
+        Optional<Question> question = questionRepository.findById(id);
+        return question.orElseGet(Question::new);
+    }
 
-		return topicRepository.findAll();
-	}
+    public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
+        Pageable pageable = PageRequest.of(page, size, sortby);
 
-	public Topic getTopic(Long id) {
-		Optional<Topic> topic = topicRepository.findById(id);
-		return topic.orElseGet(Topic::new);
-	}
 
-	public void deleteTopic(Topic topic) {
-		topicRepository.delete(topic);
-	}
+        Page<Question> questions = questionRepository.findAll(pageable);
 
-	public PointChart savePointChart(PointChart pointChart) {
-		return pointChartRepository.save(pointChart);
-	}
 
-	public List<PointChart> getPointCharts() {
-		return pointChartRepository.findAll();
-	}
+        return questions.toList();
+    }
 
-	public PointChart getPointChart(Long id) {
-		Optional<PointChart> pointChart = pointChartRepository.findById(id);
-		return pointChart.orElseGet(PointChart::new);
-	}
+    public Answer saveAnswer(Answer answer) {
+        return answerRepository.save(answer);
+    }
 
-	public void deletePointChart(PointChart pointChart) {
-		pointChartRepository.delete(pointChart);
-	}
-	
-	public QuestionRating saveQuestionRatings(QuestionRating questionRating) {
-		return questionRatingRepository.save(questionRating);
-	}
+    public Answer getAnswer(Long id) {
+        Optional<Answer> answer = answerRepository.findById(id);
+        return answer.orElseGet(Answer::new);
+    }
 
-	public List<QuestionRating> getQuestionRatings(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
-		Page<QuestionRating> questionRating = questionRatingRepository.findAll(pageable);
-		return questionRating.toList();
-	}
+    public void deleteAnswer(Answer answer) {
+        answerRepository.delete(answer);
+    }
 
-	public QuestionRating getQuestionRatings(Long id) {
-		Optional<QuestionRating> questionRating = questionRatingRepository.findById(id);
-		return questionRating.orElseGet(QuestionRating::new);
-	}
+    public List<Answer> getAnswers(int page) {
+        Pageable pageable = PageRequest.of(page, 20);
+        Page<Answer> answers = answerRepository.findAll(pageable);
+        return answers.toList();
+    }
 
-	public void deleteQuestionRating(QuestionRating questionRating) {
-		questionRatingRepository.delete(questionRating);
-	}
-	
-	public AnswerRating saveAnswerRatings(AnswerRating answerRating) {
-		return answerRatingRepository.save(answerRating);
-	}
+    public Topic saveTopic(Topic topic) {
+        return topicRepository.save(topic);
+    }
 
-	public List<AnswerRating> getAnswerRatings(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
-		Page<AnswerRating> answerRating = answerRatingRepository.findAll(pageable);
-		return answerRating.toList();
-	}
+    public List<Topic> getTopics() {
 
-	public AnswerRating getAnswerRatings(Long id) {
-		Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
-		return answerRating.orElseGet(AnswerRating::new);
-	}
+        return topicRepository.findAll();
+    }
 
-	public void deleteAnswerRating(AnswerRating answerRating) {
-		answerRatingRepository.delete(answerRating);
-	}	
+    public Topic getTopic(Long id) {
+        Optional<Topic> topic = topicRepository.findById(id);
+        return topic.orElseGet(Topic::new);
+    }
+
+    public void deleteTopic(Topic topic) {
+        topicRepository.delete(topic);
+    }
+
+    public PointChart savePointChart(PointChart pointChart) {
+        return pointChartRepository.save(pointChart);
+    }
+
+    public List<PointChart> getPointCharts() {
+        return pointChartRepository.findAll();
+    }
+
+    public PointChart getPointChart(Long id) {
+        Optional<PointChart> pointChart = pointChartRepository.findById(id);
+        return pointChart.orElseGet(PointChart::new);
+    }
+
+    public void deletePointChart(PointChart pointChart) {
+        pointChartRepository.delete(pointChart);
+    }
+
+    public QuestionRating saveQuestionRatings(QuestionRating questionRating) {
+        return questionRatingRepository.save(questionRating);
+    }
+
+    public List<QuestionRating> getQuestionRatings(int page) {
+        Pageable pageable = PageRequest.of(page, 20);
+        Page<QuestionRating> questionRating = questionRatingRepository.findAll(pageable);
+        return questionRating.toList();
+    }
+
+    public QuestionRating getQuestionRatings(Long id) {
+        Optional<QuestionRating> questionRating = questionRatingRepository.findById(id);
+        return questionRating.orElseGet(QuestionRating::new);
+    }
+
+    public void deleteQuestionRating(QuestionRating questionRating) {
+        questionRatingRepository.delete(questionRating);
+    }
+
+    public AnswerRating saveAnswerRatings(AnswerRating answerRating) {
+        return answerRatingRepository.save(answerRating);
+    }
+
+    public List<AnswerRating> getAnswerRatings(int page) {
+        Pageable pageable = PageRequest.of(page, 20);
+        Page<AnswerRating> answerRating = answerRatingRepository.findAll(pageable);
+        return answerRating.toList();
+    }
+
+    public AnswerRating getAnswerRatings(Long id) {
+        Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
+        return answerRating.orElseGet(AnswerRating::new);
+    }
+
+    public void deleteAnswerRating(AnswerRating answerRating) {
+        answerRatingRepository.delete(answerRating);
+    }
 }
