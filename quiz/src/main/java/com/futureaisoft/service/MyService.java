@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.futureaisoft.model.Answer;
@@ -27,7 +28,7 @@ public class MyService {
 
 	@Autowired
 	private QuestionRepository questionRepository;
-	
+
 	@Autowired
 	private AnswerRepository answerRepository;
 	
@@ -55,10 +56,20 @@ public class MyService {
 	public void deleteQuestion(Question question) {
 		questionRepository.delete(question);
 	}
-	
-	public List<Question> getQuestions(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
+
+	public Question getQuestion(long id) {
+		Optional<Question> question = questionRepository.findById(id);
+		return question.orElseGet(Question::new);
+	}
+
+	public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
+		Pageable pageable = PageRequest.of(page, size,sortby);
+
+		
+
 		Page<Question> questions = questionRepository.findAll(pageable);
+
+
 		return questions.toList();
 	}
 
@@ -85,10 +96,9 @@ public class MyService {
 		return topicRepository.save(topic);
 	}
 	
-	public List<Topic> getTopics(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
-		Page<Topic> topic = topicRepository.findAll(pageable);
-		return topic.toList();
+	public List<Topic> getTopics() {
+
+		return topicRepository.findAll();
 	}
 
 	public Topic getTopic(Long id) {
@@ -104,10 +114,8 @@ public class MyService {
 		return pointChartRepository.save(pointChart);
 	}
 
-	public List<PointChart> getPointChart(int page) {
-		Pageable pageable = PageRequest.of(page, 20);
-		Page<PointChart> pointChart = pointChartRepository.findAll(pageable);
-		return pointChart.toList();
+	public List<PointChart> getPointCharts() {
+		return pointChartRepository.findAll();
 	}
 
 	public PointChart getPointChart(Long id) {

@@ -52,10 +52,10 @@ public class TopicController {
 	}
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getTopics(@RequestParam(defaultValue = "1") int page) {
+	public ResponseEntity<ApiResponse> getTopics() {
 		log.info("Starting getTopics: getTopics(@RequestParam long page)");
 		try {
-			List<Topic> topic = service.getTopics(page - 1);
+			List<Topic> topic = service.getTopics();
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("Topic loaded successfully ");
 			res.setData(topic);
