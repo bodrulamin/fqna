@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.futureaisoft.model.PointChart;
+import com.futureaisoft.model.QuestionRating;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/v1/PointCharts")
+@RequestMapping("api/v1/questionRatings")
 @CrossOrigin(origins = "*")
-public class PointChartController {
+public class QuestionRatingController {
 
-	Logger log = LoggerFactory.getLogger(PointChartController.class);
+	Logger log = LoggerFactory.getLogger(QuestionRatingController.class);
 
 	@Autowired
 	private MyService service;
@@ -35,54 +35,54 @@ public class PointChartController {
 	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getPointCharts(@RequestParam(defaultValue = "1") int page) {
-		log.info("Starting getPointCharts: getPointCharts(@RequestParam long page)");
+	public ResponseEntity<ApiResponse> getQuestionRatings(@RequestParam(defaultValue = "1") int page) {
+		log.info("Starting getQuestionRatings: getQuestionRatings(@RequestParam long page)");
 		try {
-			List<PointChart> pointChart = service.getPointChart(page - 1);
+			List<QuestionRating> questionRating = service.getQuestionRatings(page - 1);
 			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("PointChart loaded successfully ");
-			res.setData(pointChart);
+			res.setMessage("QuestionRating loaded successfully ");
+			res.setData(questionRating);
 			return ResponseEntity.ok(res);
 
 		} catch (Exception e) {
 			log.trace(e.getMessage(), e);
-			res.setMessage("PointChart loading failed!");
+			res.setMessage("QuestionRating loading failed!");
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
 
 	@PostMapping(value = "")
-	public ResponseEntity<ApiResponse> save(@RequestBody PointChart entity) {
+	public ResponseEntity<ApiResponse> save(@RequestBody QuestionRating entity) {
 
-		log.info("Starting save: save(@RequestBody PointChart entity)");
+		log.info("Starting save: save(@RequestBody QuestionRating entity)");
 		try {
-			PointChart pointChart = service.savePointChart(entity);
+			QuestionRating questionRating = service.saveQuestionRatings(entity);
 			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("PointChart saved successfully");
-			res.setData(pointChart);
+			res.setMessage("QuestionRating saved successfully");
+			res.setData(questionRating);
 			return ResponseEntity.ok(res);
 
 		} catch (Exception e) {
 			log.trace(e.getMessage(), e);
-			res.setMessage("PointChart added failed!");
+			res.setMessage("QuestionRating added failed!");
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
-		log.info("Starting PointChartDelete: delete(@PathVariable(value = \"id\") Long id)");
+		log.info("Starting QuestionRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
-		PointChart pointChart = service.getPointChart(id);
+		QuestionRating questionRating = service.getQuestionRatings(id);
 		try {
-			service.deletePointChart(pointChart);
+			service.deleteQuestionRating(questionRating);
 			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("PointChart deleted successfully");
-			res.setData(pointChart);
+			res.setMessage("QuestionRating deleted successfully");
+			res.setData(questionRating);
 			return ResponseEntity.ok(res);
 		} catch (Exception e) {
 			log.trace(e.getMessage(), e);
-			res.setMessage("PointChart deletation failed!");
+			res.setMessage("QuestionRating deletation failed!");
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
