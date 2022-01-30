@@ -3,6 +3,8 @@ package com.futureaisoft.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.futureaisoft.rabbitmq.config.MessageConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,7 +46,12 @@ public class MyService {
 	@Autowired
 	private AnswerRatingRepository answerRatingRepository;
 
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
 	public Question saveQuestion(Question question) {
+
+	rabbitTemplate.convertAndSend(MessageConfig.question_save_exchange,MessageConfig.routingkey,question);
 		return questionRepository.save(question);
 	}
 

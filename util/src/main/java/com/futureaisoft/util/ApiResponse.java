@@ -10,7 +10,7 @@ public class ApiResponse {
 
 	String status = MyConstant.FAILED;
 	String message = "empty";
-	Object data = new Object();
+	Object data;
 
 	public ApiResponse() {
 	}

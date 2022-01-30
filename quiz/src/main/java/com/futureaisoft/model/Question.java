@@ -86,4 +86,17 @@ public class Question {
 		this.updateDate = updateDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Question{" +
+				"id=" + id +
+				", question='" + question + '\'' +
+				", type='" + type + '\'' +
+				", imageUrl='" + imageUrl + '\'' +
+				", topicId=" + topicId +
+				", userId=" + userId +
+				", createDate='" + createDate + '\'' +
+				", updateDate='" + updateDate + '\'' +
+				'}';
+	}
 }
