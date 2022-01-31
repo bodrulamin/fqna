@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new HttpCookieOAuth2AuthorizationRequestRepository();
     }
 
-    private static final String[] AUTH_WHITELIST = {
+    private static final String[] SWAGGER_PATHS = {
             // -- Swagger UI v2
             "/v2/api-docs",
             "/swagger-resources",
@@ -74,6 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui/**"
             // other public endpoints of your API may be appended to this array
     };
+
+
 
 
     @Override
@@ -105,7 +107,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers(SWAGGER_PATHS).permitAll()
                 .antMatchers("/auth/**", "/oauth2/**")
                 .permitAll()
                 .anyRequest()

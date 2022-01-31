@@ -8,3 +8,10 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+  qnadb:
+    image: mysql
+    container_name: qna_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - "3306:3306"
