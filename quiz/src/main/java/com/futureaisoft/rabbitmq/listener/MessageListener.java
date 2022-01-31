@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class MessageListener {
 
 @Autowired
-    MyService service;
+QuestionRepository questionRepository;
 
     @RabbitListener(queues = MessageConfig.question_save_queue)
     public void ListenToSaveQuestion(Question question){
         System.out.println("Message recieved from queue " + question);
-        service.saveQuestion(question);
+       questionRepository.save(question) ;
     }
 }

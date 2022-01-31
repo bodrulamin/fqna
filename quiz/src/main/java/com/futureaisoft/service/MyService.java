@@ -45,10 +45,18 @@ public class MyService {
     private AnswerRatingRepository answerRatingRepository;
 
 
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
-    public Question saveQuestion(Question question) {
+    public Question saveQuestion(Question question) throws Exception {
 
-        return questionRepository.save(question);
+
+            rabbitTemplate.convertAndSend(MessageConfig.question_save_exchange, MessageConfig.routingkey, question);
+
+
+
+
+        return question;
     }
 
     public Question getQuestion(Long id) {

@@ -2,7 +2,6 @@ package com.futureaisoft.controller;
 
 import java.util.List;
 
-import com.futureaisoft.rabbitmq.config.MessageConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -44,10 +43,10 @@ public class QuestionController {
             @RequestParam(defaultValue = "") String q,
             @RequestParam(defaultValue = "id") String orderby,
             @RequestParam(defaultValue = "ASC") Sort.Direction direction
-    ) {
+            ) {
         log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
         try {
-            List<Question> questions = service.getQuestions(page - 1, size, q, Sort.by(direction, orderby));
+            List<Question> questions = service.getQuestions(page - 1,size,q, Sort.by(direction, orderby));
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question loaded successfully ");
             res.setData(questions);
@@ -80,11 +79,10 @@ public class QuestionController {
 
         log.info("Starting save: save(@RequestBody Question entity)");
         try {
-            rabbitTemplate.convertAndSend(MessageConfig.question_save_exchange, MessageConfig.routingkey, entity);
-
+            Question question = service.saveQuestion(entity);
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question saved successfully");
-            res.setData(entity);
+            res.setData(question);
 
             return ResponseEntity.ok(res);
 
