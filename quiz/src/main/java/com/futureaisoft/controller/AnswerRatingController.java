@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.futureaisoft.model.AnswerRating;
-import com.futureaisoft.model.Topic;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
