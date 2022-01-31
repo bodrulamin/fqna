@@ -38,20 +38,22 @@ public class QuestionController {
     public ResponseEntity<ApiResponse> getQuestions(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int size,
+            @RequestParam(defaultValue = "0",required = false) Long topicId,
             @RequestParam(defaultValue = "") String q,
             @RequestParam(defaultValue = "id") String orderby,
             @RequestParam(defaultValue = "ASC") Sort.Direction direction
             ) {
         log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
         try {
-            List<Question> questions = service.getQuestions(page - 1,size,q, Sort.by(direction, orderby));
+            System.out.println(topicId);
+            List<Question> questions = service.getQuestions(page - 1,size,topicId,q, Sort.by(direction, orderby));
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question loaded successfully ");
             res.setData(questions);
             return ResponseEntity.ok(res);
         } catch (Exception e) {
             log.trace(e.getMessage(), e);
-            res.setMessage("Question loading failed!");
+            res.setMessage("Question loading failed! " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }

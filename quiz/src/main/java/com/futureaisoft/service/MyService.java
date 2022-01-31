@@ -46,7 +46,7 @@ public class MyService {
 
 
     public Question saveQuestion(Question question) throws Exception {
-            question = questionRepository.save(question);
+        question = questionRepository.save(question);
         return question;
     }
 
@@ -59,9 +59,17 @@ public class MyService {
         questionRepository.delete(question);
     }
 
-    public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
+    public List<Question> getQuestions(int page, int size, long topicId, String q, Sort sortby) {
         Pageable pageable = PageRequest.of(page, size, sortby);
-        Page<Question> questions = questionRepository.findAll(pageable);
+
+        Page<Question> questions;
+        if (topicId == 0) {
+            questions = questionRepository.findAll(pageable);
+        } else {
+            questions = questionRepository.getQuestionByTopicId(topicId, pageable);
+        }
+
+
         return questions.toList();
     }
 
@@ -81,7 +89,7 @@ public class MyService {
     public List<Answer> getAnswers(long questionId, int page, int size, String q, Sort sortby) {
         Pageable pageable = PageRequest.of(page, size, sortby);
 
-        Page<Answer> answers = answerRepository.findAnswersByQuestionId(questionId,pageable);
+        Page<Answer> answers = answerRepository.findAnswersByQuestionId(questionId, pageable);
         return answers.toList();
     }
 
