@@ -56,7 +56,7 @@ public class AnswerController {
 
 	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getAnswers(
-			   @RequestParam int questionId,
+			   @RequestParam long questionId,
 			   @RequestParam(defaultValue = "1") int page,
 	            @RequestParam(defaultValue = "20") int size,
 	            @RequestParam(defaultValue = "") String q,

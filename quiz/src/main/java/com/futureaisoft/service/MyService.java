@@ -78,7 +78,7 @@ public class MyService {
         answerRepository.delete(answer);
     }
 
-    public List<Answer> getAnswers(int questionId, int page, int size, String q, Sort sortby) {
+    public List<Answer> getAnswers(long questionId, int page, int size, String q, Sort sortby) {
         Pageable pageable = PageRequest.of(page, size, sortby);
 
         Page<Answer> answers = answerRepository.findAnswersByQuestionId(questionId,pageable);
