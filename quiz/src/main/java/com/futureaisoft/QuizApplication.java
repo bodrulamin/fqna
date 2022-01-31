@@ -15,7 +15,7 @@ public class QuizApplication {
 		SpringApplication.run(QuizApplication.class, args);
 	}
 	@Bean
-	public OpenAPI customOpenAPI(@Value("Descritpslakdfjsdlaf") String appDesciption, @Value("version 234234244") String appVersion) {
+	public OpenAPI customOpenAPI(@Value("Question and Answer API") String appDesciption, @Value("v1") String appVersion) {
 		return new OpenAPI()
 				.info(new Info()
 						.title("FutureAiSoft QnA API")
