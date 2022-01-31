@@ -10,7 +10,7 @@ import com.futureaisoft.model.Answer;
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, Long>{
 
-    public Page<Answer> findAnswersByQuestionId(long questionId, Pageable pageable);
+     Page<Answer> findAnswersByQuestionId(long questionId, Pageable pageable);
 
 
 
