@@ -3,8 +3,6 @@ package com.futureaisoft.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.futureaisoft.rabbitmq.config.MessageConfig;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -69,11 +67,7 @@ public class MyService {
 
     public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
         Pageable pageable = PageRequest.of(page, size, sortby);
-
-
         Page<Question> questions = questionRepository.findAll(pageable);
-
-
         return questions.toList();
     }
 
@@ -90,8 +84,8 @@ public class MyService {
         answerRepository.delete(answer);
     }
 
-    public List<Answer> getAnswers(int page) {
-        Pageable pageable = PageRequest.of(page, 20);
+    public List<Answer> getAnswers(int page, int size, String q, Sort sortby) {
+        Pageable pageable = PageRequest.of(page, size, sortby);
         Page<Answer> answers = answerRepository.findAll(pageable);
         return answers.toList();
     }

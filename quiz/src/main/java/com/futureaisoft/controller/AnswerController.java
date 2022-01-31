@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +32,9 @@ public class AnswerController {
 
 	@Autowired
 	private MyService service;
+	
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
 
 	private final ApiResponse res = MyConstant.apiRes;
 
@@ -52,10 +57,16 @@ public class AnswerController {
 	}
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getAnswers(@RequestParam(defaultValue = "1") int page) {
+	public ResponseEntity<ApiResponse> getAnswers(
+			   @RequestParam(defaultValue = "1") int page,
+	            @RequestParam(defaultValue = "20") int size,
+	            @RequestParam(defaultValue = "") String q,
+	            @RequestParam(defaultValue = "id") String orderby,
+	            @RequestParam(defaultValue = "ASC") Sort.Direction direction
+			) {
 		log.info("Starting getAnswers: getAnswers(@RequestParam long page)");
 		try {
-			List<Answer> answers = service.getAnswers(page - 1);
+			List<Answer> answers = service.getAnswers(page - 1, size, q, Sort.by(direction, orderby));
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("Answer loaded successfully ");
 			res.setData(answers);
