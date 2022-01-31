@@ -13,6 +13,7 @@ public class MessageConfig {
     public static final String question_save_queue = "question_save_queue";
     public static final String question_save_exchange = "question_save_exchange";
     public static final String routingkey = "question_routingkey";
+    public static final boolean useRabbitMq = false;
 
     @Bean
     public Queue queue() {
