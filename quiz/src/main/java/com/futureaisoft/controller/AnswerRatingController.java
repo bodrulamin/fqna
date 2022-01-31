@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.futureaisoft.model.AnswerRating;
+import com.futureaisoft.model.Topic;
 import com.futureaisoft.service.MyService;
 import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
@@ -68,12 +69,28 @@ public class AnswerRatingController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
+	
+	@GetMapping(value = "{id}")
+    public ResponseEntity<ApiResponse> getAnswerRating(@PathVariable(value = "id") long id) {
+        log.info("Starting getAnswerRating: getAnswerRating(@PathVariable(value = \"id\") long id) ");
+        try {
+        	AnswerRating answerRating = service.getAnswerRating(id);
+            res.setStatus(MyConstant.SUCCESS);
+            res.setMessage("AnswerRating loaded successfully ");
+            res.setData(answerRating);
+            return ResponseEntity.ok(res);
+        } catch (Exception e) {
+            log.trace(e.getMessage(), e);
+            res.setMessage("AnswerRating loading failed!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+        }
+    }
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting AnswerRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
-		AnswerRating answerRating = service.getAnswerRatings(id);
+		AnswerRating answerRating = service.getAnswerRating(id);
 		try {
 			service.deleteAnswerRating(answerRating);
 			res.setStatus(MyConstant.SUCCESS);

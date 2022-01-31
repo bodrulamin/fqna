@@ -46,10 +46,7 @@ public class MyService {
 
 
     public Question saveQuestion(Question question) throws Exception {
-
             question = questionRepository.save(question);
-
-
         return question;
     }
 
@@ -60,11 +57,6 @@ public class MyService {
 
     public void deleteQuestion(Question question) {
         questionRepository.delete(question);
-    }
-
-    public Question getQuestion(long id) {
-        Optional<Question> question = questionRepository.findById(id);
-        return question.orElseGet(Question::new);
     }
 
     public List<Question> getQuestions(int page, int size, String q, Sort sortby) {
@@ -156,7 +148,7 @@ public class MyService {
         return answerRating.toList();
     }
 
-    public AnswerRating getAnswerRatings(Long id) {
+    public AnswerRating getAnswerRating(Long id) {
         Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
         return answerRating.orElseGet(AnswerRating::new);
     }

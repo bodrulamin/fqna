@@ -74,8 +74,24 @@ public class AnswerController {
 			res.setMessage("Answer loading failed!");
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
-	}
-
+	}	
+	
+    @GetMapping(value = "{id}")
+    public ResponseEntity<ApiResponse> getAnswer(@PathVariable(value = "id") long id) {
+        log.info("Starting getAnswer: getAnswer(@PathVariable(value = \"id\") long id) ");
+        try {
+            Answer answer = service.getAnswer(id);
+            res.setStatus(MyConstant.SUCCESS);
+            res.setMessage("Answer loaded successfully ");
+            res.setData(answer);
+            return ResponseEntity.ok(res);
+        } catch (Exception e) {
+            log.trace(e.getMessage(), e);
+            res.setMessage("Answer loading failed!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+        }
+    }
+    
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");

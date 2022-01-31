@@ -68,6 +68,26 @@ public class QuestionRatingController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
 		}
 	}
+	
+	
+	@GetMapping(value = "{id}")
+    public ResponseEntity<ApiResponse> getQuestionRating(@PathVariable(value = "id") long id) {
+        log.info("Starting getQuestionRating: getQuestionRating(@PathVariable(value = \"id\") long id) ");
+        try {
+        	QuestionRating questionRating = service.getQuestionRatings(id);
+            res.setStatus(MyConstant.SUCCESS);
+            res.setMessage("QuestionRating loaded successfully ");
+            res.setData(questionRating);
+            return ResponseEntity.ok(res);
+        } catch (Exception e) {
+            log.trace(e.getMessage(), e);
+            res.setMessage("QuestionRating loading failed!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+        }
+    }
+	
+	
+	
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
