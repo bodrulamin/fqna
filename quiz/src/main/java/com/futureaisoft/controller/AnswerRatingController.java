@@ -69,7 +69,7 @@ public class AnswerRatingController {
 		}
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting AnswerRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 

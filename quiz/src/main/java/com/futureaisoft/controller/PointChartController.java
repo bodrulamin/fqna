@@ -69,7 +69,7 @@ public class PointChartController {
 		}
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting PointChartDelete: delete(@PathVariable(value = \"id\") Long id)");
 

@@ -67,7 +67,7 @@ public class TopicController {
 		}
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 
