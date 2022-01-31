@@ -56,6 +56,7 @@ public class AnswerController {
 
 	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getAnswers(
+			   @RequestParam int questionId,
 			   @RequestParam(defaultValue = "1") int page,
 	            @RequestParam(defaultValue = "20") int size,
 	            @RequestParam(defaultValue = "") String q,
@@ -64,7 +65,7 @@ public class AnswerController {
 			) {
 		log.info("Starting getAnswers: getAnswers(@RequestParam long page)");
 		try {
-			List<Answer> answers = service.getAnswers(page - 1, size, q, Sort.by(direction, orderby));
+			List<Answer> answers = service.getAnswers(questionId,page - 1, size, q, Sort.by(direction, orderby));
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("Answer loaded successfully ");
 			res.setData(answers);
