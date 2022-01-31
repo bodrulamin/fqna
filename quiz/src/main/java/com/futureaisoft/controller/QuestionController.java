@@ -39,14 +39,14 @@ public class QuestionController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "0",required = false) Long topicId,
-            @RequestParam(defaultValue = "") String q,
+            @RequestParam(defaultValue = "") String query,
             @RequestParam(defaultValue = "id") String orderby,
             @RequestParam(defaultValue = "ASC") Sort.Direction direction
             ) {
         log.info("Starting getQuestion: getQuestions(@RequestParam long page)");
         try {
             System.out.println(topicId);
-            List<Question> questions = service.getQuestions(page - 1,size,topicId,q, Sort.by(direction, orderby));
+            List<Question> questions = service.getQuestions(page - 1,size,topicId,query, Sort.by(direction, orderby));
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("Question loaded successfully ");
             res.setData(questions);

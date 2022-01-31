@@ -12,6 +12,9 @@ import com.futureaisoft.model.Question;
 public interface QuestionRepository extends JpaRepository<Question, Long>{
 
     Page<Question> getQuestionByTopicId(long topicId, Pageable pageable);
+    Page<Question> getQuestionByTopicIdAndQuestionContaining(long topicId, String word, Pageable pageable);
+    Page<Question> findByQuestionContaining(String word, Pageable pageable);
+
 
 
 

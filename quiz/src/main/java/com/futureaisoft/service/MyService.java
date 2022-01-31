@@ -59,14 +59,16 @@ public class MyService {
         questionRepository.delete(question);
     }
 
-    public List<Question> getQuestions(int page, int size, long topicId, String q, Sort sortby) {
+    public List<Question> getQuestions(int page, int size, long topicId, String query, Sort sortby) {
         Pageable pageable = PageRequest.of(page, size, sortby);
 
         Page<Question> questions;
         if (topicId == 0) {
-            questions = questionRepository.findAll(pageable);
+
+            questions = questionRepository.findByQuestionContaining(query,pageable);
+
         } else {
-            questions = questionRepository.getQuestionByTopicId(topicId, pageable);
+            questions = questionRepository.getQuestionByTopicIdAndQuestionContaining(topicId, query, pageable);
         }
 
 
