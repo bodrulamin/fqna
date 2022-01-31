@@ -1,5 +1,7 @@
 package com.futureaisoft.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,17 +16,17 @@ public class Topic {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String createDaate;
-	private String updateDate;
+	private Date createDate;
+	private Date updateDate;
 	
 	public Topic() {
 		
 	}
 	
-	public Topic(long id, String name, String createDaate, String updateDate) {
+	public Topic(long id, String name, Date createDate, Date updateDate) {
 		this.id = id;
 		this.name = name;
-		this.createDaate = createDaate;
+		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
 
@@ -40,16 +42,16 @@ public class Topic {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCreateDaate() {
-		return createDaate;
+	public Date getCreateDate() {
+		return createDate;
 	}
-	public void setCreateDaate(String createDaate) {
-		this.createDaate = createDaate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 	

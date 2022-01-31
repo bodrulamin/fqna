@@ -1,5 +1,7 @@
 package com.futureaisoft.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,15 +18,15 @@ public class AnswerRating {
 	private boolean isFavoirite;
 	private long answerId;
 	private long userId;
-	private String createDate;
-	private String updateDate;
+	private Date createDate;
+	private Date updateDate;
 
 	public AnswerRating() {
 
 	}
 
-	public AnswerRating(long id, boolean isFavoirite, long answerId, long userId, String createDate,
-			String updateDate) {
+	public AnswerRating(long id, boolean isFavoirite, long answerId, long userId, Date createDate,
+			Date updateDate) {
 		this.id = id;
 		this.isFavoirite = isFavoirite;
 		this.answerId = answerId;
@@ -65,19 +67,19 @@ public class AnswerRating {
 		this.userId = userId;
 	}
 
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 

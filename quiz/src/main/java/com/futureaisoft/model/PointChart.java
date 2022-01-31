@@ -1,5 +1,7 @@
 package com.futureaisoft.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,14 +17,14 @@ public class PointChart {
 	private long id;
 	private int questionPoint;
 	private int answerPoint;
-	private String createDate;
-	private String updateDate;
+	private Date createDate;
+	private Date updateDate;
 	
 	public PointChart() {
 
 	}
 	
-	public PointChart(long id, int questionPoint, int answerPoint, String createDate, String updateDate) {
+	public PointChart(long id, int questionPoint, int answerPoint, Date createDate, Date updateDate) {
 		this.id = id;
 		this.questionPoint = questionPoint;
 		this.answerPoint = answerPoint;
@@ -48,17 +50,22 @@ public class PointChart {
 	public void setAnswerPoint(int answerPoint) {
 		this.answerPoint = answerPoint;
 	}
-	public String getCreateDate() {
+
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getUpdateDate() {
+
+	public Date getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(String updateDate) {
+
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
 	
 }

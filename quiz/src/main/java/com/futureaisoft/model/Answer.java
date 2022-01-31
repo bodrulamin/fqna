@@ -1,5 +1,7 @@
 package com.futureaisoft.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,14 +19,14 @@ public class Answer {
 	private String imageUrl;
 	private long questionId;
 	private long userId;
-	private String createDate;
-	private String updateDate;
+	private Date createDate;
+	private Date updateDate;
 	
 	public Answer() {
 		
 	}
-	public Answer(long id, String answer, String imageUrl, long questionId, long userId, String createDate,
-			String updateDate) {
+	public Answer(long id, String answer, String imageUrl, long questionId, long userId, Date createDate,
+			Date updateDate) {
 		this.id = id;
 		this.answer = answer;
 		this.imageUrl = imageUrl;
@@ -64,17 +66,17 @@ public class Answer {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
+
 }
