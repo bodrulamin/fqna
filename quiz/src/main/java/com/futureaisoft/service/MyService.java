@@ -45,10 +45,12 @@ public class MyService {
     private AnswerRatingRepository answerRatingRepository;
 
 
+    public Question saveQuestion(Question question) throws Exception {
 
-    public Question saveQuestion(Question question) {
+            question = questionRepository.save(question);
 
-        return questionRepository.save(question);
+
+        return question;
     }
 
     public Question getQuestion(Long id) {
