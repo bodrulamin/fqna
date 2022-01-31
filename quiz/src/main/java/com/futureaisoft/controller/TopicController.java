@@ -2,6 +2,8 @@ package com.futureaisoft.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,25 @@ public class TopicController {
 	private MyService service;
 
 	private ApiResponse res = MyConstant.apiRes;
+	@GetMapping(value = "")
+	@Operation(summary = "Get Topics", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<ApiResponse> getTopics() {
+		log.info("Starting getTopics: getTopics(@RequestParam long page)");
+		try {
+			List<Topic> topic = service.getTopics();
+			res.setStatus(MyConstant.SUCCESS);
+			res.setMessage("Topic loaded successfully ");
+			res.setData(topic);
+			return ResponseEntity.ok(res);
+		} catch (Exception e) {
+			log.trace(e.getMessage(), e);
+			res.setMessage("Topic loading failed!");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+		}
+	}
 
 	@PostMapping(value = "")
+	@Operation(summary = "Save Topics", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> save(@RequestBody Topic entity) {
 
 		log.info("Starting save: save(@RequestBody Topic entity)");
@@ -50,23 +69,10 @@ public class TopicController {
 		}
 	}
 
-	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getTopics() {
-		log.info("Starting getTopics: getTopics(@RequestParam long page)");
-		try {
-			List<Topic> topic = service.getTopics();
-			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("Topic loaded successfully ");
-			res.setData(topic);
-			return ResponseEntity.ok(res);
-		} catch (Exception e) {
-			log.trace(e.getMessage(), e);
-			res.setMessage("Topic loading failed!");
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-		}
-	}
-	
+
 	@GetMapping(value = "{id}")
+	@Operation(summary = "Get One Topic by id", security = @SecurityRequirement(name = "bearerAuth"))
+
     public ResponseEntity<ApiResponse> getTopic(@PathVariable(value = "id") long id) {
         log.info("Starting getTopic: getTopic(@PathVariable(value = \"id\") long id) ");
         try {

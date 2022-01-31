@@ -2,6 +2,8 @@ package com.futureaisoft.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,7 @@ public class QuestionController {
     private final ApiResponse res = MyConstant.apiRes;
 
     @GetMapping(value = "")
+    @Operation(summary = "Get Questions", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ApiResponse> getQuestions(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int size,
@@ -57,24 +60,8 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
-
-    @GetMapping(value = "{id}")
-    public ResponseEntity<ApiResponse> getQuestion(@PathVariable(value = "id") long id) {
-        log.info("Starting getQuestion: getQuestion(@PathVariable(value = \"id\") long id) ");
-        try {
-            Question question = service.getQuestion(id);
-            res.setStatus(MyConstant.SUCCESS);
-            res.setMessage("Question loaded successfully ");
-            res.setData(question);
-            return ResponseEntity.ok(res);
-        } catch (Exception e) {
-            log.trace(e.getMessage(), e);
-            res.setMessage("Question loading failed!");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
-        }
-    }
-
     @PostMapping(value = "")
+    @Operation(summary = "Save Questions", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
 
         log.info("Starting save: save(@RequestBody Question entity)");
@@ -92,8 +79,27 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
+    @GetMapping(value = "{id}")
+    @Operation(summary = "Get one Question by id", security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<ApiResponse> getQuestion(@PathVariable(value = "id") long id) {
+        log.info("Starting getQuestion: getQuestion(@PathVariable(value = \"id\") long id) ");
+        try {
+            Question question = service.getQuestion(id);
+            res.setStatus(MyConstant.SUCCESS);
+            res.setMessage("Question loaded successfully ");
+            res.setData(question);
+            return ResponseEntity.ok(res);
+        } catch (Exception e) {
+            log.trace(e.getMessage(), e);
+            res.setMessage("Question loading failed!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+        }
+    }
+
+
 
     @DeleteMapping(value = "{id}")
+    @Operation(summary = "Delete one Question by id", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
         log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
 
