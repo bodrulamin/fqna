@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private static final String[] SWAGGER_PATHS = {
+            "/api-docs",
             // -- Swagger UI v2
             "/v2/api-docs",
             "/swagger-resources",
