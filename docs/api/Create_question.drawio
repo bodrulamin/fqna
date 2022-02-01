@@ -1,0 +1,155 @@
+<mxfile host="65bd71144e">
+    <diagram id="rSJp3BmRkgX8i1shsZrm" name="Page-1">
+        <mxGraphModel dx="2353" dy="2630" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="75" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=#000000;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="-130" width="1710" height="670" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="ellipse;shape=doubleEllipse;html=1;dashed=0;whitespace=wrap;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="70" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Create Question" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="20" y="10" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="6" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Click on Ask Question" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="70" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="7" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Show Question &lt;br&gt;page/modal" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="295" y="70" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="8" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="60">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="write question &lt;br&gt;field mandatory" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000033;" vertex="1" connectable="0" parent="28">
+                    <mxGeometry x="-0.2129" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="Question page/modal" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="70" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Image preview" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="695" y="180" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="10" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="11">
+                    <mxGeometry x="-0.4457" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="10" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="15">
+                    <mxGeometry x="-0.3667" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="is select image" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="50" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="No image Preview" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="70" width="105" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="22" target="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="565" y="340" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="475" y="400"/>
+                            <mxPoint x="565" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="Mulitple" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF004C;" vertex="1" connectable="0" parent="27">
+                    <mxGeometry x="0.1956" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=#FF004C;" edge="1" parent="1" source="22" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Descriptive" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF004C;" vertex="1" connectable="0" parent="67">
+                    <mxGeometry x="-0.1776" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="is choise?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="435" y="260" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="show add item" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="380" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="25" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="25" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="25" target="54">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Question &lt;br&gt;Searchable text field" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="290" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="54" target="56">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="select topic&lt;br&gt;can be select one" style="whiteSpace=wrap;html=1;dashed=0;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="56" target="58">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="Submit" style="whiteSpace=wrap;html=1;dashed=0;" vertex="1" parent="1">
+                    <mxGeometry x="1070" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="&lt;font color=&quot;#ff004c&quot;&gt;end&lt;/font&gt;" style="ellipse;html=1;shape=endState;fillColor=rgb(255, 255, 255);strokeColor=rgb(0, 0, 0);dashed=0;fontFamily=Helvetica;fontSize=12;fontColor=rgb(0, 0, 0);align=center;sketch=0;labelBackgroundColor=#000033;" vertex="1" parent="1">
+                    <mxGeometry x="1310" y="290" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="" style="edgeStyle=none;html=1;fontColor=#FF004C;" edge="1" parent="1" source="60" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="selct options" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="170" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FF004C;" edge="1" parent="1" source="63" target="60">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="1. Multiple choice&lt;br&gt;&lt;div style=&quot;text-align: left&quot;&gt;2. Descriptive&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=#FFFFFF;fontColor=#FF004C;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="190" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" style="edgeStyle=none;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;fontColor=#000033;" edge="1" parent="1" source="70" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="&lt;font color=&quot;#000033&quot;&gt;Whern user write a question it will be search and show related question. If user selct a question then user navigate question page.&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=#FFFFFF;fontColor=#FF004C;" vertex="1" parent="1">
+                    <mxGeometry x="820" y="400" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="1. When user clic Ask Question button then user navigate to create question page.&lt;br&gt;&lt;br&gt;2. When user type question, in this question will search from elisticsearch and show already have been quiz and also user can click and navigate from suggesion questions.&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;3. If user select multiple choice item from question page right top options menu then show question item with next item with right side (add item) button.&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;4. User can request for image question with text or no&lt;br&gt;&lt;br&gt;5.&amp;nbsp; User must be select topic then should visiable submit button.&amp;nbsp;&lt;br&gt;&lt;br&gt;6. If user choose a image then image upload to fileserver. User can be delete already choose image(must be delete from fileserver by api call)&lt;br&gt;&lt;br&gt;7. Please follow api call body" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;labelBackgroundColor=#FFFFFF;fontColor=#000033;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1400" width="290" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="Activity Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;labelBackgroundColor=#000000;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="245" width="180" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
