@@ -2,6 +2,8 @@ package com.futureaisoft.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,11 @@ public class AnswerRatingController {
 	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getAnswerRatings(@RequestParam(defaultValue = "1") int page) {
+	@Operation(summary = "Get AnswerRatings", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<ApiResponse> getAnswerRatings(@RequestParam long answerId) {
 		log.info("Starting getAnswerRatings: getAnswerRatings(@RequestParam long page)");
 		try {
-			List<AnswerRating> answerRating = service.getAnswerRatings(page - 1);
+			List<AnswerRating> answerRating = service.getAnswerRatings(answerId);
 			res.setStatus(MyConstant.SUCCESS);
 			res.setMessage("AnswerRating loaded successfully ");
 			res.setData(answerRating);

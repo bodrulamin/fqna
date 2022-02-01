@@ -153,12 +153,14 @@ public class MyService {
         return answerRatingRepository.save(answerRating);
     }
 
-    public List<AnswerRating> getAnswerRatings(int page) {
-        Pageable pageable = PageRequest.of(page, 20);
-        Page<AnswerRating> answerRating = answerRatingRepository.findAll(pageable);
-        return answerRating.toList();
-    }
+    public List<AnswerRating> getAnswerRatings(long answerId) {
 
+        return answerRatingRepository.findAnswerRatingsByAnswerId(answerId);
+    }
+    public List<AnswerRating> getAnswerRatingsCount(long answerId) {
+
+        return answerRatingRepository.findAnswerRatingsByAnswerId(answerId);
+    }
     public AnswerRating getAnswerRating(Long id) {
         Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
         return answerRating.orElseGet(AnswerRating::new);

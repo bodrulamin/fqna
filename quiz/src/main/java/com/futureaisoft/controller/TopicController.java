@@ -33,7 +33,7 @@ public class TopicController {
 	@Autowired
 	private MyService service;
 
-	private ApiResponse res = MyConstant.apiRes;
+	private final ApiResponse res = MyConstant.apiRes;
 	@GetMapping(value = "")
 	@Operation(summary = "Get Topics", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> getTopics() {
@@ -88,7 +88,7 @@ public class TopicController {
         }
     }
 
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 
