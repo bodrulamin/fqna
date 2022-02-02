@@ -16,18 +16,28 @@ public class Topic {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
+	private String imageUrl;
 	private Date createDate;
 	private Date updateDate;
 	
 	public Topic() {
 		
 	}
-	
-	public Topic(long id, String name, Date createDate, Date updateDate) {
+
+	public Topic(long id, String name, String imageUrl, Date createDate, Date updateDate) {
 		this.id = id;
 		this.name = name;
+		this.imageUrl = imageUrl;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public long getId() {
