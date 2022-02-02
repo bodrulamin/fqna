@@ -22,7 +22,6 @@ import com.futureaisoft.repository.PointChartRepository;
 import com.futureaisoft.repository.QuestionRatingRepository;
 import com.futureaisoft.repository.QuestionRepository;
 import com.futureaisoft.repository.TopicRepository;
-import com.futureaisoft.repository.VoteRepository;
 
 @Service
 public class MyService {
@@ -44,9 +43,6 @@ public class MyService {
 
     @Autowired
     private AnswerRatingRepository answerRatingRepository;
-    
-    @Autowired
-    private VoteRepository voteRepository;
 
     public Question saveQuestion(Question question) throws Exception {
         question = questionRepository.save(question);
