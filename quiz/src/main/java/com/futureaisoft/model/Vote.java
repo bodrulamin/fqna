@@ -2,8 +2,18 @@ package com.futureaisoft.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vote")
 public class Vote {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private boolean vote;
 	private long answerId;
