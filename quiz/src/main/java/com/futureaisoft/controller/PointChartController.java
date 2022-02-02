@@ -35,7 +35,7 @@ public class PointChartController {
 
 	@GetMapping(value = "")
 	public ResponseEntity<ApiResponse> getPointCharts() {
-		log.info("Starting getPointCharts: getPointCharts(@RequestParam long page)");
+		log.info("Starting getPointCharts: getPointCharts()");
 		try {
 			List<PointChart> pointCharts = service.getPointCharts();
 			res.setStatus(MyConstant.SUCCESS);

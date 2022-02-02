@@ -37,7 +37,7 @@ public class TopicController {
 	@GetMapping(value = "")
 	@Operation(summary = "Get Topics", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> getTopics() {
-		log.info("Starting getTopics: getTopics(@RequestParam long page)");
+		log.info("Starting getTopics: getTopics()");
 		try {
 			List<Topic> topic = service.getTopics();
 			res.setStatus(MyConstant.SUCCESS);
@@ -89,6 +89,7 @@ public class TopicController {
     }
 
 	@DeleteMapping(value = "{id}")
+	@Operation(summary = "Delete Topic by id", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 

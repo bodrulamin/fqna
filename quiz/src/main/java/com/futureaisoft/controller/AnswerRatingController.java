@@ -39,7 +39,7 @@ public class AnswerRatingController {
 	@GetMapping(value = "")
 	@Operation(summary = "Get AnswerRatings", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> getAnswerRatings(@RequestParam long answerId) {
-		log.info("Starting getAnswerRatings: getAnswerRatings(@RequestParam long page)");
+		log.info("Starting getAnswerRatings: getAnswerRatings(@RequestParam long answerId)");
 		try {
 			List<AnswerRating> answerRating = service.getAnswerRatings(answerId);
 			res.setStatus(MyConstant.SUCCESS);
@@ -55,6 +55,7 @@ public class AnswerRatingController {
 	}
 
 	@PostMapping(value = "")
+	@Operation(summary = "Save answer rating", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> save(@RequestBody AnswerRating entity) {
 
 		log.info("Starting save: save(@RequestBody AnswerRating entity)");
@@ -73,6 +74,7 @@ public class AnswerRatingController {
 	}
 	
 	@GetMapping(value = "{id}")
+	@Operation(summary = "Get One AnswerRating by answerRating id", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ApiResponse> getAnswerRating(@PathVariable(value = "id") long id) {
         log.info("Starting getAnswerRating: getAnswerRating(@PathVariable(value = \"id\") long id) ");
         try {
@@ -88,7 +90,7 @@ public class AnswerRatingController {
         }
     }
 
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "{id}")
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting AnswerRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
