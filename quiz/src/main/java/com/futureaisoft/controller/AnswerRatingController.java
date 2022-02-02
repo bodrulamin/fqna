@@ -91,6 +91,7 @@ public class AnswerRatingController {
     }
 
 	@DeleteMapping(value = "{id}")
+	@Operation(summary = "Delete AnswerRatings by answerRating id", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting AnswerRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
