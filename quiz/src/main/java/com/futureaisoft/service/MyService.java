@@ -1,8 +1,7 @@
 package com.futureaisoft.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.futureaisoft.model.*;
+import com.futureaisoft.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,41 +9,35 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.futureaisoft.model.Answer;
-import com.futureaisoft.model.AnswerRating;
-import com.futureaisoft.model.PointChart;
-import com.futureaisoft.model.Question;
-import com.futureaisoft.model.QuestionRating;
-import com.futureaisoft.model.Topic;
-import com.futureaisoft.repository.AnswerRatingRepository;
-import com.futureaisoft.repository.AnswerRepository;
-import com.futureaisoft.repository.PointChartRepository;
-import com.futureaisoft.repository.QuestionRatingRepository;
-import com.futureaisoft.repository.QuestionRepository;
-import com.futureaisoft.repository.TopicRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MyService {
 
+    private final QuestionRepository questionRepository;
+    private final AnswerRepository answerRepository;
+    private final TopicRepository topicRepository;
+    private final PointChartRepository pointChartRepository;
+    private final QuestionRatingRepository questionRatingRepository;
+    private final AnswerRatingRepository answerRatingRepository;
     @Autowired
-    private QuestionRepository questionRepository;
+    public MyService(QuestionRepository questionRepository,
+                     AnswerRepository answerRepository,
+                     TopicRepository topicRepository,
+                     PointChartRepository pointChartRepository,
+                     QuestionRatingRepository questionRatingRepository,
+                     AnswerRatingRepository answerRatingRepository
+    ) {
+        this.questionRepository = questionRepository;
+        this.answerRepository = answerRepository;
+        this.topicRepository = topicRepository;
+        this.pointChartRepository = pointChartRepository;
+        this.questionRatingRepository = questionRatingRepository;
+        this.answerRatingRepository = answerRatingRepository;
+    }
 
-    @Autowired
-    private AnswerRepository answerRepository;
-
-    @Autowired
-    private TopicRepository topicRepository;
-
-    @Autowired
-    private PointChartRepository pointChartRepository;
-
-    @Autowired
-    private QuestionRatingRepository questionRatingRepository;
-
-    @Autowired
-    private AnswerRatingRepository answerRatingRepository;
-
-    public Question saveQuestion(Question question) throws Exception {
+    public Question saveQuestion(Question question)  {
         question = questionRepository.save(question);
         return question;
     }
@@ -64,7 +57,7 @@ public class MyService {
         Page<Question> questions;
         if (topicId == 0) {
 
-            questions = questionRepository.findByQuestionContaining(query,pageable);
+            questions = questionRepository.findByQuestionContaining(query, pageable);
 
         } else {
             questions = questionRepository.getQuestionByTopicIdAndQuestionContaining(topicId, query, pageable);
@@ -156,10 +149,12 @@ public class MyService {
 
         return answerRatingRepository.findAnswerRatingsByAnswerId(answerId);
     }
+
     public List<AnswerRating> getAnswerRatingsCount(long answerId) {
 
         return answerRatingRepository.findAnswerRatingsByAnswerId(answerId);
     }
+
     public AnswerRating getAnswerRating(Long id) {
         Optional<AnswerRating> answerRating = answerRatingRepository.findById(id);
         return answerRating.orElseGet(AnswerRating::new);
