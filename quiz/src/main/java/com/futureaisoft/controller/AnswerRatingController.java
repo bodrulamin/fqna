@@ -25,7 +25,7 @@ import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/v1/answerRatings")
+@RequestMapping("api/v1/answer-ratings")
 @CrossOrigin(origins = "*")
 public class AnswerRatingController {
 

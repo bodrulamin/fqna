@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface AnswerRatingRepository extends JpaRepository<AnswerRating, Long> {
     List<AnswerRating>  findAnswerRatingsByAnswerId(long answerId);
-    Long countAnswerRatingsByAnswerId(long answerId);
+    long countAllByAnswerIdAndIsFavourite(long answerId, boolean isFavourite);
 }

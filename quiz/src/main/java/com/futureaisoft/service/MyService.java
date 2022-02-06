@@ -2,6 +2,7 @@ package com.futureaisoft.service;
 
 import com.futureaisoft.model.*;
 import com.futureaisoft.repository.*;
+import com.futureaisoft.model.RatingCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,20 +22,22 @@ public class MyService {
     private final PointChartRepository pointChartRepository;
     private final QuestionRatingRepository questionRatingRepository;
     private final AnswerRatingRepository answerRatingRepository;
+    private RatingCount ratingCount;
     @Autowired
     public MyService(QuestionRepository questionRepository,
                      AnswerRepository answerRepository,
                      TopicRepository topicRepository,
                      PointChartRepository pointChartRepository,
                      QuestionRatingRepository questionRatingRepository,
-                     AnswerRatingRepository answerRatingRepository
-    ) {
+                     AnswerRatingRepository answerRatingRepository,
+                     RatingCount ratingCount) {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.topicRepository = topicRepository;
         this.pointChartRepository = pointChartRepository;
         this.questionRatingRepository = questionRatingRepository;
         this.answerRatingRepository = answerRatingRepository;
+        this.ratingCount = ratingCount;
     }
 
     public Question saveQuestion(Question question)  {
@@ -126,13 +129,13 @@ public class MyService {
         return questionRatingRepository.save(questionRating);
     }
 
-    public List<QuestionRating> getQuestionRatings(int page) {
+    public List<QuestionRating> getQuestionRatingById(int page) {
         Pageable pageable = PageRequest.of(page, 20);
         Page<QuestionRating> questionRating = questionRatingRepository.findAll(pageable);
         return questionRating.toList();
     }
 
-    public QuestionRating getQuestionRatings(Long id) {
+    public QuestionRating getQuestionRatingById(Long id) {
         Optional<QuestionRating> questionRating = questionRatingRepository.findById(id);
         return questionRating.orElseGet(QuestionRating::new);
     }
@@ -162,5 +165,12 @@ public class MyService {
 
     public void deleteAnswerRating(AnswerRating answerRating) {
         answerRatingRepository.delete(answerRating);
+    }
+
+    public RatingCount getQuestionRatingCount(Long questionId) {
+       long positive = questionRatingRepository.countAllByQuestionIdAndIsFavourite(questionId,true);
+       long negative = questionRatingRepository.countAllByQuestionIdAndIsFavourite(questionId,false);
+        ratingCount = new RatingCount(questionId,positive,negative);
+        return ratingCount;
     }
 }

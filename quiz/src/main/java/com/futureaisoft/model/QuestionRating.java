@@ -15,7 +15,7 @@ public class QuestionRating {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private boolean isFavoirite;
+	private boolean isFavourite;
 	private long questionId;
 	private long userId;
 	private Date createDate;
@@ -25,10 +25,10 @@ public class QuestionRating {
 
 	}
 
-	public QuestionRating(long id, boolean isFavoirite, long questionId, long userId, Date createDate,
-			Date updateDate) {
+	public QuestionRating(long id, boolean isFavourite, long questionId, long userId, Date createDate,
+						  Date updateDate) {
 		this.id = id;
-		this.isFavoirite = isFavoirite;
+		this.isFavourite = isFavourite;
 		this.questionId = questionId;
 		this.userId = userId;
 		this.createDate = createDate;
@@ -43,12 +43,12 @@ public class QuestionRating {
 		this.id = id;
 	}
 
-	public boolean isFavoirite() {
-		return isFavoirite;
+	public boolean isFavourite() {
+		return isFavourite;
 	}
 
-	public void setFavoirite(boolean isFavoirite) {
-		this.isFavoirite = isFavoirite;
+	public void setFavourite(boolean isFavoirite) {
+		this.isFavourite = isFavoirite;
 	}
 
 	public long getQuestionId() {

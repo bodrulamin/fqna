@@ -1,7 +1,8 @@
 package com.futureaisoft.controller;
 
-import java.util.List;
-
+import com.futureaisoft.model.RatingCount;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import com.futureaisoft.util.ApiResponse;
 import com.futureaisoft.util.MyConstant;
 
 @RestController
-@RequestMapping("api/v1/questionRatings")
+@RequestMapping("api/v1/question-ratings")
 @CrossOrigin(origins = "*")
 public class QuestionRatingController {
 
@@ -34,14 +35,18 @@ public class QuestionRatingController {
 
 	private final ApiResponse res = MyConstant.apiRes;
 
-	@GetMapping
-	public ResponseEntity<?> getQuestionRatings(@RequestParam(defaultValue = "1") int page) {
-		log.info("Starting getQuestionRatings: getQuestionRatings(@RequestParam long page)");
+
+	@GetMapping("/count")
+	@Operation(summary = "Get Rating Count", security = @SecurityRequirement(name = "bearerAuth"))
+
+	public ResponseEntity<?> getRatingCount(@RequestParam long questionId) {
+		log.info("Starting getRatingCount: getRatingCount(@RequestParam long questionId)");
 		try {
-			List<QuestionRating> questionRating = service.getQuestionRatings(page - 1);
+			RatingCount ratingCount = service.getQuestionRatingCount(questionId);
+
 			res.setStatus(MyConstant.SUCCESS);
-			res.setMessage("QuestionRating loaded successfully ");
-			res.setData(questionRating);
+			res.setMessage("Question RatingCount loaded successfully ");
+			res.setData(ratingCount);
 			return ResponseEntity.ok(res);
 
 		} catch (Exception e) {
@@ -52,6 +57,8 @@ public class QuestionRatingController {
 	}
 
 	@PostMapping
+	@Operation(summary = "Save Rating Count", security = @SecurityRequirement(name = "bearerAuth"))
+
 	public ResponseEntity<?> save(@RequestBody QuestionRating entity) {
 
 		log.info("Starting save: save(@RequestBody QuestionRating entity)");
@@ -71,10 +78,11 @@ public class QuestionRatingController {
 	
 	
 	@GetMapping(value = "/{id}")
-    public ResponseEntity<?> getQuestionRating(@PathVariable(value = "id") long id) {
+	@Operation(summary = "Get Rating by rating id", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<?> getQuestionRating(@PathVariable(value = "id") long id) {
         log.info("Starting getQuestionRating: getQuestionRating(@PathVariable(value = \"id\") long id) ");
         try {
-        	QuestionRating questionRating = service.getQuestionRatings(id);
+        	QuestionRating questionRating = service.getQuestionRatingById(id);
             res.setStatus(MyConstant.SUCCESS);
             res.setMessage("QuestionRating loaded successfully ");
             res.setData(questionRating);
@@ -93,7 +101,7 @@ public class QuestionRatingController {
 	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting QuestionRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
-		QuestionRating questionRating = service.getQuestionRatings(id);
+		QuestionRating questionRating = service.getQuestionRatingById(id);
 		try {
 			service.deleteQuestionRating(questionRating);
 			res.setStatus(MyConstant.SUCCESS);

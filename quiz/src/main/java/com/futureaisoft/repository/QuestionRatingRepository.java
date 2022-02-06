@@ -8,4 +8,6 @@ import com.futureaisoft.model.QuestionRating;
 @Repository
 public interface QuestionRatingRepository extends JpaRepository<QuestionRating, Long>{
 
+    long countAllByQuestionIdAndIsFavourite(long questionId,boolean isFavourite);
+
 }
