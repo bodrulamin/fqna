@@ -34,9 +34,9 @@ public class TopicController {
 	private MyService service;
 
 	private final ApiResponse res = MyConstant.apiRes;
-	@GetMapping(value = "")
+	@GetMapping
 	@Operation(summary = "Get Topics", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> getTopics() {
+	public ResponseEntity<?> getTopics() {
 		log.info("Starting getTopics: getTopics()");
 		try {
 			List<Topic> topic = service.getTopics();
@@ -51,9 +51,9 @@ public class TopicController {
 		}
 	}
 
-	@PostMapping(value = "")
+	@PostMapping
 	@Operation(summary = "Save Topics", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> save(@RequestBody Topic entity) {
+	public ResponseEntity<?> save(@RequestBody Topic entity) {
 
 		log.info("Starting save: save(@RequestBody Topic entity)");
 		try {
@@ -70,10 +70,10 @@ public class TopicController {
 	}
 
 
-	@GetMapping(value = "{id}")
+	@GetMapping(value = "/{id}")
 	@Operation(summary = "Get One Topic by id", security = @SecurityRequirement(name = "bearerAuth"))
 
-    public ResponseEntity<ApiResponse> getTopic(@PathVariable(value = "id") long id) {
+    public ResponseEntity<?> getTopic(@PathVariable(value = "id") long id) {
         log.info("Starting getTopic: getTopic(@PathVariable(value = \"id\") long id) ");
         try {
         	Topic topic = service.getTopic(id);
@@ -88,9 +88,9 @@ public class TopicController {
         }
     }
 
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
 	@Operation(summary = "Delete Topic by id", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete topic: delete(@PathVariable(value = \"id\") Long id)");
 
 		Topic topic = service.getTopic(id);

@@ -31,14 +31,18 @@ public class AnswerRatingController {
 
 	Logger log = LoggerFactory.getLogger(AnswerRatingController.class);
 
-	@Autowired
-	private MyService service;
+	private final MyService service;
 
 	private final ApiResponse res = MyConstant.apiRes;
 
-	@GetMapping(value = "")
+	@Autowired
+	public AnswerRatingController(MyService service) {
+		this.service = service;
+	}
+
+	@GetMapping
 	@Operation(summary = "Get AnswerRatings", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> getAnswerRatings(@RequestParam long answerId) {
+	public ResponseEntity<?> getAnswerRatings(@RequestParam long answerId) {
 		log.info("Starting getAnswerRatings: getAnswerRatings(@RequestParam long answerId)");
 		try {
 			List<AnswerRating> answerRating = service.getAnswerRatings(answerId);
@@ -54,9 +58,9 @@ public class AnswerRatingController {
 		}
 	}
 
-	@PostMapping(value = "")
+	@PostMapping
 	@Operation(summary = "Save answer rating", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> save(@RequestBody AnswerRating entity) {
+	public ResponseEntity<?> save(@RequestBody AnswerRating entity) {
 
 		log.info("Starting save: save(@RequestBody AnswerRating entity)");
 		try {
@@ -73,9 +77,9 @@ public class AnswerRatingController {
 		}
 	}
 	
-	@GetMapping(value = "{id}")
+	@GetMapping(value = "/{id}")
 	@Operation(summary = "Get One AnswerRating by answerRating id", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<ApiResponse> getAnswerRating(@PathVariable(value = "id") long id) {
+    public ResponseEntity<?> getAnswerRating(@PathVariable(value = "id") long id) {
         log.info("Starting getAnswerRating: getAnswerRating(@PathVariable(value = \"id\") long id) ");
         try {
         	AnswerRating answerRating = service.getAnswerRating(id);
@@ -90,9 +94,9 @@ public class AnswerRatingController {
         }
     }
 
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
 	@Operation(summary = "Delete AnswerRatings by answerRating id", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting AnswerRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
 		AnswerRating answerRating = service.getAnswerRating(id);

@@ -38,9 +38,9 @@ public class AnswerController {
 
 	private final ApiResponse res = MyConstant.apiRes;
 
-	@GetMapping(value = "")
+	@GetMapping
 	@Operation(summary = "Get Answers", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> getAnswers(
+	public ResponseEntity<?> getAnswers(
 			@RequestParam long questionId,
 			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "20") int size,
@@ -62,9 +62,9 @@ public class AnswerController {
 		}
 	}
 
-	@PostMapping(value = "")
+	@PostMapping
 	@Operation(summary = "Save Answer", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<ApiResponse> save(@RequestBody Answer entity) {
+	public ResponseEntity<?> save(@RequestBody Answer entity) {
 
 		log.info("Starting save: save(@RequestBody Answer entity)");
 		try {
@@ -82,10 +82,10 @@ public class AnswerController {
 	}
 
 	
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
 	@Operation(summary = "Get one Answer", security = @SecurityRequirement(name = "bearerAuth"))
 
-	public ResponseEntity<ApiResponse> getAnswer(@PathVariable(value = "id") long id) {
+	public ResponseEntity<?> getAnswer(@PathVariable(value = "id") long id) {
         log.info("Starting getAnswer: getAnswer(@PathVariable(value = \"id\") long id) ");
         try {
             Answer answer = service.getAnswer(id);
@@ -100,10 +100,10 @@ public class AnswerController {
         }
     }
     
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
 	@Operation(summary = "Delete Answer by answerId", security = @SecurityRequirement(name = "bearerAuth"))
 
-	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
 
 		Answer answer = service.getAnswer(id);

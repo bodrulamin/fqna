@@ -34,7 +34,7 @@ public class PointChartController {
 	private final ApiResponse res = MyConstant.apiRes;
 
 	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getPointCharts() {
+	public ResponseEntity<?> getPointCharts() {
 		log.info("Starting getPointCharts: getPointCharts()");
 		try {
 			List<PointChart> pointCharts = service.getPointCharts();
@@ -51,7 +51,7 @@ public class PointChartController {
 	}
 
 	@PostMapping(value = "")
-	public ResponseEntity<ApiResponse> save(@RequestBody PointChart entity) {
+	public ResponseEntity<?> save(@RequestBody PointChart entity) {
 
 		log.info("Starting save: save(@RequestBody PointChart entity)");
 		try {
@@ -68,8 +68,8 @@ public class PointChartController {
 		}
 	}
 	
-	@GetMapping(value = "{id}")
-    public ResponseEntity<ApiResponse> getPointChart(@PathVariable(value = "id") long id) {
+	@GetMapping(value = "/{id}")
+    public ResponseEntity<?> getPointChart(@PathVariable(value = "id") long id) {
         log.info("Starting getPointChart: getPointChart(@PathVariable(value = \"id\") long id) ");
         try {
         	PointChart pointChart = service.getPointChart(id);
@@ -85,7 +85,7 @@ public class PointChartController {
     }
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting PointChartDelete: delete(@PathVariable(value = \"id\") Long id)");
 
 		PointChart pointChart = service.getPointChart(id);

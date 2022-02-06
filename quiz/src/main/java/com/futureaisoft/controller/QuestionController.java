@@ -30,15 +30,17 @@ import com.futureaisoft.util.MyConstant;
 @CrossOrigin(origins = "*")
 public class QuestionController {
     Logger log = LoggerFactory.getLogger(QuestionController.class);
-
-    @Autowired
-    private MyService service;
-
+    private final MyService service;
     private final ApiResponse res = MyConstant.apiRes;
 
-    @GetMapping(value = "")
+    @Autowired
+    public QuestionController(MyService service) {
+        this.service = service;
+    }
+
+    @GetMapping
     @Operation(summary = "Get Questions", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<ApiResponse> getQuestions(
+    public ResponseEntity<?> getQuestions(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "0",required = false) Long topicId,
@@ -60,9 +62,9 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
-    @PostMapping(value = "")
+    @PostMapping
     @Operation(summary = "Save Questions", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<ApiResponse> save(@RequestBody Question entity) {
+    public ResponseEntity<?> save(@RequestBody Question entity) {
 
         log.info("Starting save: save(@RequestBody Question entity)");
         try {
@@ -79,9 +81,9 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
         }
     }
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     @Operation(summary = "Get one Question by id", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<ApiResponse> getQuestion(@PathVariable(value = "id") long id) {
+    public ResponseEntity<?> getQuestion(@PathVariable(value = "id") long id) {
         log.info("Starting getQuestion: getQuestion(@PathVariable(value = \"id\") long id) ");
         try {
             Question question = service.getQuestion(id);
@@ -98,9 +100,9 @@ public class QuestionController {
 
 
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     @Operation(summary = "Delete one Question by id", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
         log.info("Starting delete: delete(@PathVariable(value = \"id\") Long id)");
 
         Question question = service.getQuestion(id);

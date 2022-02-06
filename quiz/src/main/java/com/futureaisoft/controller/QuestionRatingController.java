@@ -34,8 +34,8 @@ public class QuestionRatingController {
 
 	private final ApiResponse res = MyConstant.apiRes;
 
-	@GetMapping(value = "")
-	public ResponseEntity<ApiResponse> getQuestionRatings(@RequestParam(defaultValue = "1") int page) {
+	@GetMapping
+	public ResponseEntity<?> getQuestionRatings(@RequestParam(defaultValue = "1") int page) {
 		log.info("Starting getQuestionRatings: getQuestionRatings(@RequestParam long page)");
 		try {
 			List<QuestionRating> questionRating = service.getQuestionRatings(page - 1);
@@ -51,8 +51,8 @@ public class QuestionRatingController {
 		}
 	}
 
-	@PostMapping(value = "")
-	public ResponseEntity<ApiResponse> save(@RequestBody QuestionRating entity) {
+	@PostMapping
+	public ResponseEntity<?> save(@RequestBody QuestionRating entity) {
 
 		log.info("Starting save: save(@RequestBody QuestionRating entity)");
 		try {
@@ -70,8 +70,8 @@ public class QuestionRatingController {
 	}
 	
 	
-	@GetMapping(value = "{id}")
-    public ResponseEntity<ApiResponse> getQuestionRating(@PathVariable(value = "id") long id) {
+	@GetMapping(value = "/{id}")
+    public ResponseEntity<?> getQuestionRating(@PathVariable(value = "id") long id) {
         log.info("Starting getQuestionRating: getQuestionRating(@PathVariable(value = \"id\") long id) ");
         try {
         	QuestionRating questionRating = service.getQuestionRatings(id);
@@ -90,7 +90,7 @@ public class QuestionRatingController {
 	
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ApiResponse> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		log.info("Starting QuestionRatingtDelete: delete(@PathVariable(value = \"id\") Long id)");
 
 		QuestionRating questionRating = service.getQuestionRatings(id);
